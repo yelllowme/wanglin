@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="#FFCBCFD2">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:background="@color/main_color_dark"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/imageview_aboutme_cancle"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/left_cancle_white"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="与我相关"
+            android:textSize="18sp"
+            android:textColor="@color/white"/>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="10dp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/main_color_dark"
+        android:orientation="horizontal">
+
+        <!--@我的-->
+        <LinearLayout
+            android:id="@+id/layout_aboutMe_AtMe"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/textview_aboutMe_AtMeTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="/@我的"
+                android:textSize="15sp"
+                android:textColor="@color/white"/>
+
+            <ImageView
+                android:id="@+id/imageview_aboutMe_AtMePoint"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:src="@mipmap/point_white"/>
+
+        </LinearLayout><!--@我的-->
+
+        <!--回复我的-->
+        <LinearLayout
+            android:id="@+id/layout_aboutMe_commentMe"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/textview_aboutMe_commentMeTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="回复我的"
+                android:textSize="15sp"
+                android:textColor="#FF8A9197"/>
+
+            <ImageView
+                android:id="@+id/imageview_aboutMe_commentMePoint"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:visibility="invisible"
+                android:src="@mipmap/point_white"/>
+
+        </LinearLayout><!--回复我的-->
+
+        <!--赞我的-->
+        <LinearLayout
+            android:id="@+id/layout_aboutMe_goodMe"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/textview_aboutMe_goodMeTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="赞我的"
+                android:textSize="15sp"
+                android:textColor="#FF8A9197"/>
+
+            <ImageView
+                android:id="@+id/imageview_aboutMe_goodMePoint"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:visibility="invisible"
+                android:src="@mipmap/point_white"/>
+
+        </LinearLayout><!--赞我的-->
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp">
+
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+            android:id="@+id/listview_aboutMe_AtMe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:divider="#00000000"
+            android:dividerHeight="15dp"
+            ptr:ptrHeaderTextColor="@color/gray"/>
+
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+            android:id="@+id/listView_aboutMe_commentMe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:divider="#00000000"
+            android:dividerHeight="15dp"
+            ptr:ptrHeaderTextColor="@color/gray"/>
+
+        <com.handmark.pulltorefresh.library.PullToRefreshListView
+            android:id="@+id/listView_aboutMe_goodMe"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:divider="#00000000"
+            android:dividerHeight="15dp"
+            ptr:ptrHeaderTextColor="@color/gray"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

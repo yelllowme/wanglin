@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="#FF353535"
+    android:gravity="center">
+
+    <RelativeLayout
+        android:id="@+id/layout_choosedPhotoSmallItem_photoItem"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageview_choosedPhotoSmalItem_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"/>
+
+        <ImageView
+            android:id="@+id/imageview_choosedPhotoSmalItem_isChoosed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_choosedPhotoSmallItem_takePhoto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:gravity="center"
+        android:background="@drawable/selector_gray_to_black">
+
+        <ImageView
+            android:id="@+id/imageview_choosedPhotoSmalItem_cameraIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:src="@mipmap/camera_icon"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="拍摄照片"
+            android:textSize="13sp"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

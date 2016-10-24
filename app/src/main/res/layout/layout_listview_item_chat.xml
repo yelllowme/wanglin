@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content" android:background="#FFE9EAEC">
+
+    <!--时间栏-->
+    <TextView
+        android:id="@+id/textview_chatItem_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="19:00"
+        android:textSize="12sp"
+        android:textColor="#FFA1A2A4"/>
+
+    <!--对方消息-->
+    <LinearLayout
+        android:id="@+id/layout_chatItem_fromFriend"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp">
+
+        <com.wanglinkeji.wanglin.customerview.CircleImageView
+            android:id="@+id/imageview_chatItem_friendHeader"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/pdd"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp">
+
+            <TextView
+                android:id="@+id/textview_chatItem_friendNickName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="韩梅梅"
+                android:textSize="13sp"
+                android:textColor="#FFA1A2A4"/>
+
+            <TextView
+                android:id="@+id/textview_chatItem_friendContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/shape_rectangle_white_noborder_left_top_corner"
+                android:padding="10dp"
+                android:text="How are you?"
+                android:textSize="14sp"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+    </LinearLayout><!--对方消息-->
+
+    <!--我的消息-->
+    <LinearLayout
+        android:id="@+id/layout_chatItem_fromMe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingRight="20dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:layout_marginRight="10dp"
+            android:gravity="right">
+
+            <TextView
+                android:id="@+id/textview_chatItem_myNickName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="李雷"
+                android:textSize="13sp"
+                android:textColor="#FFA1A2A4"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="10dp"
+                android:gravity="center">
+
+                <ProgressBar
+                    android:id="@+id/progressBar_loading_chatItem_myContent"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_centerInParent="true"
+                    android:indeterminateDrawable="@anim/anim_loading"
+                    android:indeterminateDuration="1500"/>
+
+                <TextView
+                    android:id="@+id/textview_chatItem_myContent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/shape_rectangle_blue29c_noborder_righte_top_corner"
+                    android:padding="10dp"
+                    android:text="Fine thanks,And you?"
+                    android:textSize="14sp"
+                    android:textColor="@color/white"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <com.wanglinkeji.wanglin.customerview.CircleImageView
+            android:id="@+id/imageview_chatItem_myHeader"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@mipmap/pdd"/>
+
+    </LinearLayout><!--我的消息-->
+
+</LinearLayout>

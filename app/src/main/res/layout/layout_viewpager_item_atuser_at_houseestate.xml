@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="#FFEDF1F4"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@drawable/shape_rectangle_white_noborder_allcorner_smaller"
+            android:padding="5dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@mipmap/search_gray_icon"/>
+
+            <EditText
+                android:id="@+id/edittext_AtUserViewPager_AtHouseEstate_searchText"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:maxLines="1"
+                android:background="@null"
+                android:paddingLeft="10dp"
+                android:hint="搜索名字"
+                android:textSize="13sp"
+                android:textColor="#FFCBCBCB"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:background="@color/white">
+
+        <ListView
+            android:id="@+id/listview_AtUserViewPager_AtHouseEstate_userList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:divider="@null"/>
+
+        <com.wanglinkeji.wanglin.customerview.SideBar
+            android:id="@+id/sidebar_AtUserViewPager_AtHouseEstate"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"/>
+
+        <ListView
+            android:id="@+id/listview_AtUserViewPager_AtHouseEstate_searchUserList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:visibility="gone"
+            android:divider="@null"
+            android:scrollbars="none"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

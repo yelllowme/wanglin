@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/colorPrimaryDark">
+
+        <ImageView
+            android:id="@+id/imageview_searchHouseEstate_cancle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@mipmap/left_cancle_white"
+            android:padding="12dp"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="6"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="10dp">
+
+            <EditText
+                android:id="@+id/edittext_searchHousingEstate_searchHousingEstate"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:imeOptions="actionSearch"
+                android:hint="搜索您的小区"
+                android:inputType="text"
+                android:textCursorDrawable="@drawable/shape_cursor_drawable_login"
+                android:textColorHint="#FF919AA5"
+                android:singleLine="true"
+                android:textSize="15sp"
+                android:textColor="@color/white" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/white"
+                android:src="@mipmap/gray_bottom_line"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageview_searchHouseEstate_searchIncon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@mipmap/search_icon"
+            android:padding="12dp"/>
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listview_searchHousEstate_houseList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="11" />
+
+</LinearLayout>

@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="@color/white">
+
+    <LinearLayout
+        android:id="@+id/layout_blogDetails_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/main_color_dark"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp">
+
+        <ImageView
+            android:id="@+id/imageview_blogDetailsNormal_cancle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/left_cancle_white"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            android:gravity="center"
+            android:text="吐槽详情"
+            android:textSize="18sp"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"/>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none"
+        android:layout_below="@+id/layout_blogDetails_title"
+        android:layout_above="@+id/layout_issueBlog_bottom">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!--上半部分：非匿名-->
+            <LinearLayout
+                android:id="@+id/layout_blogDetails_notAnony"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <!--头像，名字，日期等标题栏-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <!--头像栏-->
+                    <RelativeLayout
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent">
+
+                        <com.wanglinkeji.wanglin.customerview.CircleImageView
+                            android:id="@+id/imageview_blogDetailsNormal_header"
+                            android:layout_width="55dp"
+                            android:layout_height="55dp"
+                            android:layout_centerInParent="true"
+                            android:src="@mipmap/pdd"/>
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentRight="true"
+                            android:visibility="gone"
+                            android:layout_alignBottom="@+id/imageview_blogDetailsNormal_header"
+                            android:src="@mipmap/ic_launcher"/>
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignBottom="@+id/imageview_blogDetailsNormal_header"
+                            android:src="@mipmap/proprietor_v"/>
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentRight="true"
+                            android:visibility="gone"
+                            android:layout_alignBottom="@+id/imageview_blogDetailsNormal_header"
+                            android:src="@mipmap/renter_v"/>
+
+                    </RelativeLayout><!--头像栏-->
+
+                    <!--头像左侧栏-->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:layout_marginLeft="10dp">
+
+                        <!--名字+勋章+更多操作栏-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="bottom"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/textview_blogDetailsNormal_userName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="XXX"
+                                android:textColor="@color/black"
+                                android:textSize="18sp"/>
+
+                            <!--勋章栏-->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="horizontal"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp">
+
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:src="@mipmap/car_authentication"/>
+
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:src="@mipmap/identity_authentication"/>
+
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:src="@mipmap/education_authentication"/>
+
+
+                            </LinearLayout><!--勋章栏-->
+
+                            <ImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:src="@mipmap/more_operation"/>
+
+                        </LinearLayout><!--名字+勋章+更多操作栏-->
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="5dp" />
+
+                        <!--标签，行业，时间栏-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:gravity="top"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:src="@mipmap/industry_icon"/>
+
+                            <TextView
+                                android:id="@+id/textview_blogDetailsNormal_industry"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:gravity="center"
+                                android:text="xxx"
+                                android:textSize="14sp"
+                                android:textColor="@color/gray_dark_two"/>
+
+                            <ImageView
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:layout_marginLeft="15dp"
+                                android:src="@mipmap/label_icon"/>
+
+                            <TextView
+                                android:id="@+id/textview_blogDetailsNormal_label"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="5dp"
+                                android:text="xxx"
+                                android:textSize="14sp"
+                                android:textColor="@color/gray_dark_two"/>
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1"/>
+
+                            <TextView
+                                android:id="@+id/textview_blogDetailsNormal_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:text="xx:xx"
+                                android:textSize="14sp"
+                                android:textColor="@color/gray_dark_two"/>
+
+                        </LinearLayout><!--标签，行业，时间栏-->
+
+                    </LinearLayout><!--头像左侧栏-->
+
+                </LinearLayout><!--头像，名字，日期等标题栏-->
+
+                <io.github.rockerhieu.emojicon.EmojiconTextView
+                    android:id="@+id/textview_blogDetailsNormal_blogDetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="3dp"
+                    android:textScaleX="1.1"
+                    android:textSize="14sp"
+                    android:textColor="@color/gray_dark_three"/>
+
+                <com.wanglinkeji.wanglin.customerview.MyGridView
+                    android:id="@+id/gridview_blogDetailsNormal_nineImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:numColumns="3"
+                    android:horizontalSpacing="10dp"
+                    android:verticalSpacing="10dp"/>
+
+            </LinearLayout><!--上半部分：非匿名-->
+
+            <!--上半部分：匿名-->
+            <LinearLayout
+                android:id="@+id/layout_blogDetails_anony"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
+
+                <!--头像，名字，日期等标题栏-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <!--头像栏-->
+                    <RelativeLayout
+                        android:layout_width="60dp"
+                        android:layout_height="match_parent">
+
+                        <ImageView
+                            android:id="@+id/imageview_blogDetailsNormal_header_anony"
+                            android:layout_width="55dp"
+                            android:layout_height="55dp"
+                            android:layout_centerInParent="true"
+                            android:src="@mipmap/anonymity_header"/>
+
+                    </RelativeLayout><!--头像栏-->
+
+                    <!--头像左侧栏-->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="10dp"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:text="匿名"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:gravity="bottom"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"/>
+
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:src="@mipmap/more_operation"/>
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:orientation="horizontal"
+                                android:gravity="center">
+
+                                <TextView
+                                    android:id="@+id/textview_blogDetailsNormal_date_anony"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:text="xx:xx"
+                                    android:textSize="14sp"
+                                    android:textColor="@color/gray_dark_two"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout><!--头像左侧栏-->
+
+                </LinearLayout><!--头像，名字，日期等标题栏-->
+
+                <io.github.rockerhieu.emojicon.EmojiconTextView
+                    android:id="@+id/textview_blogDetailsNormal_blogDetails_anony"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="3dp"
+                    android:textScaleX="1.1"
+                    android:textSize="14sp"
+                    android:textColor="@color/gray_dark_three"/>
+
+                <com.wanglinkeji.wanglin.customerview.MyGridView
+                    android:id="@+id/gridview_blogDetailsNormal_nineImage_anony"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:numColumns="3"
+                    android:horizontalSpacing="10dp"
+                    android:verticalSpacing="10dp"/>
+
+            </LinearLayout><!--上半部分：非匿名-->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_marginTop="10dp"
+                android:background="#FFEEF1F3"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.1"/>
+
+                <LinearLayout
+                    android:id="@+id/layout_blogDetails_commentCount"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/textview_blogDetailsNormal_commentCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="评论 xx"
+                        android:textSize="15sp"
+                        android:textColor="@color/blue_two" />
+
+                    <ImageView
+                        android:id="@+id/imageview_blogDetailsNormal_commentPoint"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:src="@mipmap/point_icon_blue"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout_blogDetails_goodCount"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/textview_blogDetailsNormal_goodCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="点赞 xx"
+                        android:textSize="15sp"
+                        android:textColor="@color/gray_seven" />
+
+                    <ImageView
+                        android:id="@+id/imageview_blogDetailsNormal_goodPoint"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:visibility="invisible"
+                        android:src="@mipmap/point_icon_blue"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_dark_six_d4"/>
+
+            <!--评论+点赞栏-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.wanglinkeji.wanglin.customerview.MyListView
+                    android:id="@+id/listview_viewPagerItem_blogDetails_commentList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none"
+                    android:divider="@null"/>
+
+                <com.wanglinkeji.wanglin.customerview.MyListView
+                    android:id="@+id/listview_viewPagerItem_blogDetails_goodList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none"
+                    android:divider="@null"
+                    android:visibility="gone"/>
+
+            </RelativeLayout><!--评论+点赞栏-->
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/layout_blogDetails_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:background="@color/main_color_dark">
+
+        <LinearLayout
+            android:id="@+id/layout_blogDetails_addComment"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@mipmap/comment_white_icon"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="评论"
+                android:textSize="15sp"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_blogDetailsNormal_addComment"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:gravity="center"
+            android:background="#FFEDF1F4"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textview_blogDetailsNormal_addComment_AtUserName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="/@xx"
+                        android:textSize="15sp"
+                        android:textColor="#FF3B8EB0"/>
+
+                    <io.github.rockerhieu.emojicon.EmojiconEditText
+                        android:id="@+id/edittext_blogDetailsNormal_addComment_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="10dp"
+                        android:background="@null"
+                        android:textSize="15sp"
+                        android:textColor="#FF585C5F"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#FF3B8EB0"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/imageview_blogDetailsNormal_addComment_addFaceImage"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="10dp"
+                android:src="@mipmap/face_small_icon"/>
+
+            <ImageView
+                android:id="@+id/imageview_blogDetailsNormal_addComment_send"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="10dp"
+                android:src="@mipmap/send_comment"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#FF3A444E"/>
+
+        <LinearLayout
+            android:id="@+id/layout_blogDetails_addGood"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/imageview_blogDetailsNormal_addGood"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@mipmap/good_icon_white"/>
+
+            <TextView
+                android:id="@+id/textview_blogDetailsNormal_addGood"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="点赞"
+                android:textSize="15sp"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

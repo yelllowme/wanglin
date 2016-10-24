@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <!--<ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/main_bg"
+        android:scaleType="fitXY"/>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--标题（天气+小区名字+搜索）-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/imageview_homePage_housingEstateFragment_weather"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/common_weather_icon"/>
+
+                <TextView
+                    android:id="@+id/textview_homePage_housingEstateFragment_weather"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:text="xx°"
+                    android:textSize="20sp"
+                    android:textColor="#FF9BA0A3"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textview_homePage_housingEstateFragment_housingEstateName"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2.5"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:focusableInTouchMode="true"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:text="网邻"
+                android:textSize="18sp"
+                android:textColor="@color/white"/>
+
+            <LinearLayout
+                android:id="@+id/layout_homePage_housingEstateFragment_search"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/imageview_homePage_housingEstateFragment_search"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_weight="1"
+                    android:src="@mipmap/search_icon"/>
+
+            </LinearLayout>
+
+        </LinearLayout> <!--标题（天气+小区名字+搜索）-->
+
+        <!--副标题（小区吐槽+同城吐槽+大事件）-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textview_homePage_housingEstateFragment_housingEstateSpewing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="小区吐槽"
+                        android:textSize="17sp"
+                        android:textColor="@color/white"/>
+
+                    <!--<ImageView
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_marginLeft="3dp"
+                        android:src="@mipmap/pull_down_icon_white"/>-->
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/imageview_homePage_housingEstateFragment_housingEstateSpewingPoint"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_marginRight="6dp"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/point_white"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textview_homePage_housingEstateFragment_citySpewing"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="同城吐槽"
+                    android:textSize="17sp"
+                    android:textColor="@color/white"/>
+
+                <ImageView
+                    android:id="@+id/imageview_homePage_housingEstateFragment_citySpewingPoint"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:scaleType="fitXY"
+                    android:visibility="invisible"
+                    android:src="@mipmap/point_white"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textview_homePage_housingEstateFragment_news"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="大事件"
+                    android:textSize="17sp"
+                    android:textColor="@color/white"/>
+
+                <ImageView
+                    android:id="@+id/imageview_homePage_housingEstateFragment_newsPoint"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:scaleType="fitXY"
+                    android:visibility="invisible"
+                    android:src="@mipmap/point_white"/>
+
+            </LinearLayout>
+
+        </LinearLayout><!--副标题（小区吐槽+同城吐槽+大事件）-->
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager_homePage_housingEstateFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="11"/>
+
+    </LinearLayout>
+
+    <!--选择附近小区页面-->
+    <LinearLayout
+        android:id="@+id/layout_housingEstateBlog_choosedNeighborHouseEstate"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="#99333333"
+        android:visibility="gone"
+        android:paddingBottom="50dp"
+        android:paddingTop="50dp"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp">
+
+        <LinearLayout
+            android:id="@+id/layout_housingEstateBlog_choosedNeighborHouseEstate_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/imageview_housingEstateBlog_choosedNeighborHouseEstate_cancle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:scaleType="fitXY"
+                android:src="@mipmap/blue_image"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="15dp"
+                android:background="@drawable/shape_rectangle_white_boborder_bottom_corner">
+
+                <!--搜索栏-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@mipmap/search_icon_blue"/>
+
+                    <EditText
+                        android:id="@+id/edittext_housingEstateBlog_choosedNeighborHouseEstate_searchText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="10dp"
+                        android:background="@null"
+                        android:imeOptions="actionSearch"
+                        android:hint="输入小区名字搜索"
+                        android:inputType="text"
+                        android:textColorHint="#FF737373"
+                        android:singleLine="true"
+                        android:textSize="15sp"
+                        android:textColor="#FF737373"/>
+
+                </LinearLayout><!--搜索栏-->
+
+                <!--搜索栏横线-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="25dp"
+                        android:layout_height="match_parent" />
+
+                    <ImageView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_weight="1"
+                        android:src="@mipmap/gray_bottom_line"/>
+
+                </LinearLayout><!--搜索栏横线-->
+
+                <!--我的小区栏-->
+                <LinearLayout
+                    android:id="@+id/layout_housingEstateBlog_choosedNeighborHouseEstate_myHouseEstate_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@mipmap/mine_icon_blue"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="10dp"
+                        android:text="我的小区"
+                        android:textSize="15sp"
+                        android:textColor="#FF000000"/>
+
+                </LinearLayout><!--我的小区栏-->
+
+                <!--我的小区左边-->
+                <LinearLayout
+                    android:id="@+id/layout_housingEstateBlog_choosedNeighborHouseEstate_myHouseEstate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp" />
+
+                    <TextView
+                        android:id="@+id/textview_housingEstateBlog_choosedNeighborHouseEstate_myHouseEstate"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:text="XXXX"
+                        android:textSize="15sp"
+                        android:textColor="#FF737373"/>
+
+                </LinearLayout><!--我的小区栏左边-->
+
+                <!--选择附近小区栏-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@mipmap/location_icon"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginLeft="10dp"
+                        android:text="选择附近小区"
+                        android:textSize="15sp"
+                        android:textColor="#FF000000"/>
+
+                </LinearLayout> <!--选择附近小区栏-->
+
+                <!--选择附近小区左边-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="5dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp" />
+
+                    <ListView
+                        android:id="@+id/listview_housingEstateBlog_choosedNeighborHouseEstate_houseEstateList"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:divider="@null"
+                        android:layout_marginTop="5dp"
+                        android:scrollbars="none"/>
+
+                </LinearLayout><!--选择附近小区栏左边-->
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout><!--选择附近小区页面-->
+
+    <!--加载页面-->
+    <LinearLayout
+        android:id="@+id/layout_housingEstateBlog_loadingPage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="#99333333">
+
+        <ProgressBar
+            android:id="@+id/loading_anim"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+            android:indeterminateDrawable="@anim/anim_loading"
+            android:indeterminateDuration="1500"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

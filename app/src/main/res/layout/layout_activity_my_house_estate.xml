@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="@color/colorPrimaryDark">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/imageview_myHouseEstate_cancle"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="7dp"
+            android:layout_marginLeft="15dp"
+            android:src="@mipmap/left_cancle_white"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="8"
+                android:gravity="center"
+                android:text="我的小区"
+                android:textSize="18sp"
+                android:textColor="@color/white"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="7dp"
+            android:layout_marginRight="15dp"
+            android:visibility="invisible"
+            android:src="@mipmap/left_cancle_white"/>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="11"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingRight="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:background="#FFEFF1F3">
+
+        <ListView
+            android:id="@+id/listview_myHouseEstate_houseEstateList"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:divider="@null"
+            android:padding="10dp"
+            android:layout_above="@+id/layout_myHouseEstate_bottom_add"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#FFE1E5E8"
+            android:layout_above="@+id/layout_myHouseEstate_bottom_add"/>
+
+        <LinearLayout
+            android:id="@+id/layout_myHouseEstate_bottom_add"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:background="#FFEFF1F3">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@mipmap/add_icon_gray"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="添加小区"
+                android:textSize="18sp"
+                android:textColor="#FF888C8D"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

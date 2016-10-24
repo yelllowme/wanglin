@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="@color/colorPrimaryDark">
+
+    <!--标题栏-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/imageview_addHouseEstate_cancle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="7dp"
+                android:src="@mipmap/left_cancle_white"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textview_addhouseEstate_title"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            android:gravity="center"
+            android:text="添加小区"
+            android:textSize="18sp"
+            android:textColor="@color/white"/>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2" />
+
+    </LinearLayout> <!--标题栏-->
+
+    <!--未上传房产证-->
+    <LinearLayout
+        android:id="@+id/layout_addHouseEstate_notfinish_image"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6.5"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/upload_allcorner_notfinish_icon"
+                android:id="@+id/imageView" />
+
+        </LinearLayout>
+
+    </LinearLayout><!--未上传房产证-->
+
+    <!--已上传房产证-->
+    <LinearLayout
+        android:id="@+id/layout_addHouseEstate_finish_image"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6.5"
+        android:visibility="visible"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="5">
+
+            <ImageView
+                android:id="@+id/imageview_addHouseEstate_rentContractImage"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:scaleType="fitXY" />
+
+            <ImageView
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:layout_centerInParent="true"
+                android:background="#99000000"/>
+
+            <ImageView
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"
+                android:scaleType="fitXY"
+                android:src="@mipmap/upload_allcorner_finish_icon"/>
+
+        </RelativeLayout>
+
+    </LinearLayout><!--已上传房产证-->
+
+    <LinearLayout
+        android:id="@+id/textview_addhouseEstate_addImageText"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/layout_addHouseEstate_whatidentity_proprietor"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/imageview_addHouseEstate_whatIdentity_proprietor"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/shape_circle_blue"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="上传房产证"
+                android:textSize="15sp"
+                android:textColor="#FFA6AAB3"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_addHouseEstate_whatidentity_tentment"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/imageview_addHouseEstate_whatIdentity_tentment"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="@drawable/shape_circle_gray"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="上传租赁合同"
+                android:textSize="15sp"
+                android:textColor="#FFA6AAB3"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--住房信息-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="#FFEDF1F4">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:text="请选择您的小区"
+            android:textSize="13sp"
+            android:textColor="#FFC6C7C9"/>
+
+        <!--搜索小区栏-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.8"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@color/white"
+            android:padding="10dp">
+
+            <EditText
+                android:id="@+id/edittext_addHouseEstate_searchText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@null"
+                android:imeOptions="actionSearch"
+                android:singleLine="true"
+                android:hint="输入小区名字搜索"
+                android:textSize="15sp"
+                android:textColor="#FF848484"/>
+
+            <ImageView
+                android:id="@+id/imageview_addHouseEstate_seatchIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@mipmap/search_gray_icon"/>
+
+        </LinearLayout><!--搜索小区栏-->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:paddingLeft="10dp"
+            android:text="请输入门牌号"
+            android:textSize="13sp"
+            android:textColor="#FFC6C7C9"/>
+
+        <!--住房门牌号-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="10dp">
+
+            <!--栋 + 单元-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <!--栋-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:background="@color/white"
+                    android:padding="5dp">
+
+                    <EditText
+                        android:id="@+id/edittext_addHouseEstate_blockNum"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:background="@null"
+                        android:textColor="#FF848484"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="栋"
+                        android:textSize="15sp"
+                        android:textColor="#FF848484"/>
+
+                </LinearLayout><!--栋-->
+
+                <!--单元-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:background="@color/white"
+                    android:layout_marginLeft="5dp"
+                    android:padding="5dp">
+
+                    <EditText
+                        android:id="@+id/edittext_addHouseEstate_unitNum"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:inputType="number"
+                        android:background="@null"
+                        android:textColor="#FF848484"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="单元"
+                        android:textSize="15sp"
+                        android:textColor="#FF848484"/>
+
+                </LinearLayout><!--单元-->
+
+            </LinearLayout><!--栋 + 单元-->
+
+            <!--楼 + 号-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginTop="5dp">
+
+                <!--楼-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:background="@color/white"
+                    android:padding="5dp">
+
+                    <EditText
+                        android:id="@+id/edittext_addHouseEstate_floorNum"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:singleLine="true"
+                        android:inputType="number"
+                        android:background="@null"
+                        android:textColor="#FF848484"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="楼"
+                        android:textSize="15sp"
+                        android:textColor="#FF848484"/>
+
+                </LinearLayout><!--楼-->
+
+                <!--号-->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:background="@color/white"
+                    android:layout_marginLeft="5dp"
+                    android:padding="5dp">
+
+                    <EditText
+                        android:id="@+id/edittext_addHouseEstate_roomNum"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:textColor="#FF848484"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="号"
+                        android:textSize="15sp"
+                        android:textColor="#FF848484"/>
+
+                </LinearLayout><!--号-->
+
+            </LinearLayout><!--楼 + 号-->
+
+        </LinearLayout><!--住房门牌号-->
+
+        <!--提交按钮-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.2"
+            android:gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp">
+
+            <TextView
+                android:id="@+id/textview_addhouseEstate_finish"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_rectangle_blue_noborder_allcorner"
+                android:gravity="center"
+                android:text="提交审核"
+                android:textSize="17sp"
+                android:textColor="@color/selector_white_to_gray"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

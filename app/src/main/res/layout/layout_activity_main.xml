@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/main_bg"
+        android:scaleType="fitXY"/>
+
+    <!--小区Fragment-->
+    <fragment
+        android:id="@+id/fragment_homePage_housingEstate"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/layout_homePage_bottom"
+        android:name="com.wanglinkeji.wanglin.fragment.HousingEstateFragment"
+        tools:layout="@layout/layout_fragment_housing_estate" />
+
+    <fragment
+        android:id="@+id/fragment_homePage_neighbor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/layout_homePage_bottom"
+        android:name="com.wanglinkeji.wanglin.fragment.NeighborFragment"
+        tools:layout="@layout/layout_fragment_neighbor" />
+
+    <fragment
+        android:id="@+id/fragment_homePage_certifiedProperty"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/layout_homePage_bottom"
+        android:layout_marginBottom="10dp"
+        android:name="com.wanglinkeji.wanglin.fragment.CertifiedPropertyFragment"
+        tools:layout="@layout/layout_fragment_certified_property" />
+
+    <fragment
+        android:id="@+id/fragment_homePage_userCenter"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/layout_homePage_bottom"
+        android:name="com.wanglinkeji.wanglin.fragment.UserCenterFragment"
+        tools:layout="@layout/layout_fragment_usercenter" />
+
+    <!--底部标题栏（小区+邻居+物业+我的）-->
+    <LinearLayout
+        android:id="@+id/layout_homePage_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/main_color_dark">
+
+        <!--小区-->
+        <RelativeLayout
+            android:id="@+id/layout_homePage_bottomBtn_housingEstate"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp">
+
+            <ImageView
+                android:id="@+id/imageview_homePage_bottomBtn_housingEstate"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:layout_above="@+id/space_houseEstate"
+                android:src="@mipmap/housing_estate_blue"/>
+
+            <TextView
+                android:id="@+id/space_houseEstate"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_centerInParent="true"/>
+
+            <TextView
+                android:id="@+id/textview_homePage_bottomBtn_housingEstate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/space_houseEstate"
+                android:text="小区"
+                android:textSize="13sp"
+                android:textColor="@color/blue"/>
+
+        </RelativeLayout><!--小区-->
+
+        <!--邻居-->
+        <RelativeLayout
+            android:id="@+id/layout_homePage_bottomBtn_neighbor"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp">
+
+            <ImageView
+                android:id="@+id/imageview_homePage_bottomBtn_neighbor"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:layout_above="@+id/space_neighbor"
+                android:src="@mipmap/neighbor_icon_white"/>
+
+            <TextView
+                android:id="@+id/space_neighbor"
+                android:layout_width="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_height="4dp" />
+
+            <TextView
+                android:id="@+id/textview_homePage_bottomBtn_neighbor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/space_neighbor"
+                android:text="邻居"
+                android:textSize="13sp"
+                android:textColor="@color/gray"/>
+
+            <TextView
+                android:id="@+id/textview_homePage_bottomNeighbor_messageNum"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:background="@drawable/shape_circle_red_f67"
+                android:layout_alignRight="@+id/imageview_homePage_bottomBtn_neighbor"
+                android:visibility="invisible"
+                android:gravity="center"
+                android:text="7"
+                android:textColor="@color/white"
+                android:textSize="12sp"/>
+
+        </RelativeLayout><!--邻居-->
+
+        <ImageView
+            android:id="@+id/imageview_homePage_bottomBtn_addBlog"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@mipmap/issue_icon"/>
+
+        <!--物管-->
+        <RelativeLayout
+            android:id="@+id/layout_homePage_bottomBtn_certifiedProperty"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp">
+
+            <ImageView
+                android:id="@+id/imageview_homePage_bottomBtn_certifiedProperty"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerHorizontal="true"
+                android:layout_above="@+id/space_wuye"
+                android:src="@mipmap/certified_property_icon_white"/>
+
+            <TextView
+                android:id="@+id/space_wuye"
+                android:layout_width="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_height="4dp" />
+
+            <TextView
+                android:id="@+id/textview_homePage_bottomBtn_certifiedProperty"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/space_wuye"
+                android:text="物业"
+                android:textSize="13sp"
+                android:textColor="@color/gray"/>
+
+        </RelativeLayout><!--物管-->
+
+        <!--我的-->
+        <RelativeLayout
+            android:id="@+id/layout_homePage_bottomBtn_userCenter"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp">
+
+            <ImageView
+                android:id="@+id/imageview_homePage_bottomBtn_userCenter"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_above="@+id/space_usercenter"
+                android:layout_centerHorizontal="true"
+                android:src="@mipmap/user_center_icon_white"/>
+
+            <TextView
+                android:id="@+id/space_usercenter"
+                android:layout_width="match_parent"
+                android:layout_centerInParent="true"
+                android:layout_height="4dp" />
+
+            <TextView
+                android:id="@+id/textview_homePage_bottomBtn_userCenter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/space_usercenter"
+                android:text="我的"
+                android:textSize="13sp"
+                android:textColor="@color/gray"/>
+
+        </RelativeLayout><!--我的-->
+
+    </LinearLayout><!--底部标题栏（小区+邻居+物业+我的）-->
+
+    <!--加号发表页-->
+    <LinearLayout
+        android:id="@+id/layout_homePage_addPage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:gravity="center"
+        android:background="#FFEDF1F2"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+    <!--空白-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"/>
+
+    <!--发表（三个发表按钮）部分-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <!--发起活动-->
+        <LinearLayout
+            android:id="@+id/layout_homePage_issue_activity"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_weight="1"
+                android:src="@mipmap/issue_activity_icon"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="发起活动"
+                android:textSize="15sp"
+                android:textColor="#FF646869"/>
+
+        </LinearLayout><!--发起活动-->
+
+        <!--空白-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"/>
+
+        <!--同城吐槽-->
+        <LinearLayout
+            android:id="@+id/layout_homePage_issue_cityBlog"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_weight="1"
+                android:src="@mipmap/issue_city_blog_icon"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="同城吐槽"
+                android:textSize="15sp"
+                android:textColor="#FF646869"/>
+
+        </LinearLayout><!--同城吐槽-->
+
+        <!--空白-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.2"/>
+
+        <!--小区吐槽-->
+        <LinearLayout
+            android:id="@+id/layout_homePage_issue_houseEstateBlog"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_weight="1"
+                android:src="@mipmap/issue_house_estate_blog_icon"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="小区吐槽"
+                android:textSize="15sp"
+                android:textColor="#FF646869"/>
+
+        </LinearLayout><!--小区吐槽-->
+
+    </LinearLayout><!--发表（三个发表按钮）部分-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+        <!--返回栏-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:background="@color/white">
+
+            <ImageView
+                android:id="@+id/imageview_popwindow_homePageAddPage_cancle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@mipmap/fork_blue_icon"/>
+
+        </LinearLayout><!--返回栏-->
+
+    </LinearLayout><!--加号发表页-->
+
+</RelativeLayout>

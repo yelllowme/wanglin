@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content" android:gravity="center"
+    android:padding="10dp" android:background="@color/white">
+
+    <TextView
+        android:id="@+id/textview_listviewItem_AtHouseEstate_sortLetter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:visibility="invisible"
+        android:text="A"
+        android:textSize="16sp"
+        android:textColor="@color/black"/>
+
+    <com.wanglinkeji.wanglin.customerview.CircleImageView
+        android:id="@+id/imageview_listviewItem_AtHouseEstate_header"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="15dp"
+        android:src="@mipmap/pdd" />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginLeft="15dp">
+
+        <TextView
+            android:id="@+id/textview_listviewItem_AtHouseEstate_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:layout_centerVertical="true"
+            android:text="XXXXX"
+            android:textSize="15sp"
+            android:textColor="#FF969696"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#FFF0F0F0"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

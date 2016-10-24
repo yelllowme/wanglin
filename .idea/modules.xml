@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/libraries/GestureImageView/main/GestureImageView_main.iml" filepath="$PROJECT_DIR$/libraries/GestureImageView/main/GestureImageView_main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/PhotoView/library/PhotoView_library.iml" filepath="$PROJECT_DIR$/libraries/PhotoView/library/PhotoView_library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/PullToRefresh/library/PullToRefresh_library.iml" filepath="$PROJECT_DIR$/libraries/PullToRefresh/library/PullToRefresh_library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/emoji_library/emoji_library.iml" filepath="$PROJECT_DIR$/emoji_library/emoji_library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraries/libraries.iml" filepath="$PROJECT_DIR$/libraries/libraries.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wanglin.iml" filepath="$PROJECT_DIR$/wanglin.iml" />
+    </modules>
+  </component>
+</project>

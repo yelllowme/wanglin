@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="@mipmap/main_bg"
+    android:paddingLeft="10dp" android:paddingRight="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="25dp"
+            android:layout_height="25dp" />
+
+        <TextView
+            android:id="@+id/textview_fragment_CertifiledProperty_houseEstateName"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="XXXXX"
+            android:textSize="15sp"
+            android:textColor="@color/white"/>
+
+        <com.wanglinkeji.wanglin.customerview.CircleImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="5dp"
+            android:src="@mipmap/pdd"/>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="170dp">
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/viewpager_fragment_CertifiledProperty_scrollImages"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+                <LinearLayout
+                    android:id="@+id/layout_fragmentCertifiedProperty_ScollImages_point"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/viewpager_fragment_CertifiledProperty_scrollImages"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"/>
+
+            </RelativeLayout>
+
+            <!--物业功能栏-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/shape_rectangle_white_noborder_allcorner">
+
+                <!--物业功能栏上半部分-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <!--物业缴费-->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                       <ImageView
+                           android:layout_width="30dp"
+                           android:layout_height="30dp"
+                           android:src="@mipmap/certified_property_pay"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="物业缴费"
+                            android:textSize="12sp"
+                            android:textColor="#FF8A8A8A"/>
+
+                    </LinearLayout><!--物业缴费-->
+
+                    <!--快递领物-->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@mipmap/get_express"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="快递领物"
+                            android:textSize="12sp"
+                            android:textColor="#FF8A8A8A"/>
+
+                    </LinearLayout><!--快递领物-->
+
+                    <!--我要报修-->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@mipmap/apply_repair"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="我要报修"
+                            android:textSize="12sp"
+                            android:textColor="#FF8A8A8A"/>
+
+                    </LinearLayout><!--我要报修-->
+
+                    <!--小区众筹-->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@mipmap/crowd_funding"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="小区众筹"
+                            android:textSize="12sp"
+                            android:textColor="#FF8A8A8A"/>
+
+                    </LinearLayout><!--小区众筹-->
+
+                </LinearLayout><!--物业功能栏上半部分-->
+
+                <!--物业功能栏下半部分-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <!--表扬批评-->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@mipmap/praise_criticism"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="表扬批评"
+                            android:textSize="12sp"
+                            android:textColor="#FF8A8A8A"/>
+
+                    </LinearLayout><!--表扬批评-->
+
+                    <!--建议献策-->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@mipmap/add_suggestions"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="建议献策"
+                            android:textSize="12sp"
+                            android:textColor="#FF8A8A8A"/>
+
+                    </LinearLayout><!--建议献策-->
+
+                    <!--BOSS直通-->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@mipmap/boss_contact"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="BOSS直通"
+                            android:textSize="12sp"
+                            android:textColor="#FF8A8A8A"/>
+
+                    </LinearLayout><!--BOSS直通-->
+
+                    <!--更多功能-->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@mipmap/more_function"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:text="更多功能"
+                            android:textSize="12sp"
+                            android:textColor="#FF8A8A8A"/>
+
+                    </LinearLayout><!--更多功能-->
+
+                </LinearLayout><!--物业功能栏下半部分-->
+
+            </LinearLayout><!--物业功能栏-->
+
+            <com.wanglinkeji.wanglin.customerview.MyListView
+                android:id="@+id/listview_fragment_CertifiledProperty_news"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:scrollbars="none"
+                android:divider="#00000000"
+                android:dividerHeight="10dp"
+                android:background="@drawable/shape_rectangle_white_noborder_allcorner"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

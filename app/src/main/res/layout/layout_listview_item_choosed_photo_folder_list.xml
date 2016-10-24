@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content" android:paddingTop="10dp"
+    android:paddingLeft="10dp" android:paddingRight="10dp"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/imageview_choosedPhotoSmallFolderItem_header"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:scaleType="fitXY"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textview_choosedPhotoSmallFolderItem_folderName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="XXXX"
+                android:textColor="@color/black"
+                android:textSize="17sp"/>
+
+            <TextView
+                android:id="@+id/textview_choosedPhotoSmallFolderItem_photoNum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="xx张"
+                android:textSize="13sp"
+                android:textColor="@color/gray_dark_five_73"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageview_choosedPhotoSmallFolderItem_isChoosed"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/photo_floder_choosed_icon"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/gray_dark_six_d4"/>
+
+</LinearLayout>

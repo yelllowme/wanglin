@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingRight="10dp" android:paddingLeft="10dp">
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/listview_houseEstate_news"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        android:dividerHeight="15dp"
+        android:headerDividersEnabled="false"
+        android:layout_marginTop="-15dp"
+        android:divider="#00000000"
+        ptr:ptrHeaderTextColor="@color/gray"/>
+
+</RelativeLayout>

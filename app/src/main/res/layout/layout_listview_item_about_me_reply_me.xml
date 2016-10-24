@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="15dp" android:paddingRight="15dp"
+    android:background="@drawable/shape_rectangle_white_noborder_allcorner">
+
+        <!--头像，名字，日期等标题栏-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <!--头像栏-->
+            <RelativeLayout
+                android:layout_width="60dp"
+                android:layout_height="match_parent">
+
+                <com.wanglinkeji.wanglin.customerview.CircleImageView
+                    android:id="@+id/imageview_listviewItem_aboutMeReplyMe_header"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/pdd"/>
+
+                <!--<ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignTop="@+id/imageview_listviewItem_housingEstate_header"
+                    android:layout_marginTop="-5dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@mipmap/ic_launcher"/>
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignBottom="@+id/imageview_listviewItem_housingEstate_header"
+                    android:src="@mipmap/ic_launcher"/>-->
+
+            </RelativeLayout><!--头像栏-->
+
+            <!--头像左侧栏-->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_marginLeft="10dp">
+
+                <!--名字+勋章+更多操作栏-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textview_listviewItem_aboutMeReplyMe_userName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="XXX"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"/>
+
+                    <!--勋章栏-->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp">
+
+                        <!--<ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:src="@mipmap/ic_launcher"/>
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:layout_marginLeft="10dp"
+                            android:src="@mipmap/ic_launcher"/>-->
+
+
+                    </LinearLayout><!--勋章栏-->
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@mipmap/more_operation"/>
+
+                </LinearLayout><!--名字+勋章+更多操作栏-->
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="5dp" />
+
+                <!--标签，行业，时间栏-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="top"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@mipmap/industry_icon"/>
+
+                    <TextView
+                        android:id="@+id/textview_listviewItem_aboutMeReplyMe_industry"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:gravity="center"
+                        android:text="xxx"
+                        android:textSize="14sp"
+                        android:textColor="@color/gray_dark_two"/>
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_marginLeft="15dp"
+                        android:src="@mipmap/label_icon"/>
+
+                    <TextView
+                        android:id="@+id/textview_listviewItem_aboutMeReplyMe_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="xxx"
+                        android:textSize="14sp"
+                        android:textColor="@color/gray_dark_two"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"/>
+
+                    <TextView
+                        android:id="@+id/textview_listviewItem_aboutMeReplyMe_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="xx:xx"
+                        android:textSize="14sp"
+                        android:textColor="@color/gray_dark_two"/>
+
+                </LinearLayout><!--标签，行业，时间栏-->
+
+            </LinearLayout><!--头像左侧栏-->
+
+        </LinearLayout><!--头像，名字，日期等标题栏-->
+
+    <io.github.rockerhieu.emojicon.EmojiconTextView
+        android:id="@+id/textview_listviewItem_aboutMeReplyMe_replyContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="PDD真的喜欢乱JB黑我"
+        android:textSize="14sp"
+        android:textColor="@color/gray_dark_three"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#FFE3E4E6" />
+
+        <io.github.rockerhieu.emojicon.EmojiconTextView
+            android:id="@+id/textview_listviewItem_aboutMeReplyMe_blogDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="3dp"
+            android:textScaleX="1.1"
+            android:text="我是全英雄联盟最骚的骚猪，我F可以实力手动换子弹，这波百发百中我并不可能死，死了就是你这个骚猪。对面出动一个师的兵力干我，骚猪我依然发育起来了，而且还躲过很多波的围剿！"
+            android:textSize="14sp"
+            android:textColor="@color/gray_dark_three"/>
+
+        <com.wanglinkeji.wanglin.customerview.MyGridView
+            android:id="@+id/gridview_listviewItem_aboutMeReplyMe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:numColumns="3"
+            android:horizontalSpacing="10dp"
+            android:verticalSpacing="10dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/gray_lighter_two"/>
+
+        <!--转发+评论+点赞栏-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <!--转发栏-->
+            <!--<LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/transmit_icon"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="xx"
+                    android:textSize="15sp"
+                    android:textColor="@color/gray_lighter_one"/>
+
+            </LinearLayout>--><!--转发栏-->
+
+            <!--评论栏-->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/add_common_icon"/>
+
+                <TextView
+                    android:id="@+id/textview_listviewItem_aboutMeReplyMe_commentCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="xx"
+                    android:textSize="15sp"
+                    android:textColor="@color/gray_lighter_one"/>
+
+            </LinearLayout><!--评论栏-->
+
+            <!--点赞栏-->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/imageview_listviewItem_aboutMeReplyMe_addGood"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@mipmap/praise_icon_gray"/>
+
+                <TextView
+                    android:id="@+id/textview_listviewItem_aboutMeReplyMe_goodCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="xx"
+                    android:textSize="15sp"
+                    android:textColor="@color/gray_lighter_one"/>
+
+            </LinearLayout> <!--点赞栏-->
+
+        </LinearLayout><!--转发+评论+点赞栏-->
+
+</LinearLayout>

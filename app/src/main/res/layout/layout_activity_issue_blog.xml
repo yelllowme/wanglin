@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textview_issueBlog_bottomSpace_out"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"/>
+
+    <LinearLayout
+        android:id="@+id/layout_issueBlog_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:background="#FFEDF1F4">
+
+        <ImageView
+            android:id="@+id/imageview_issueBlog_addImage"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_weight="1"
+            android:src="@mipmap/image_icon"/>
+
+        <ImageView
+            android:id="@+id/imageview_issueBlog_aitUser"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_weight="1"
+            android:src="@mipmap/ait_icon"/>
+
+        <ImageView
+            android:id="@+id/imageview_issueBlog_addFaceImage"
+            android:layout_width="0dp"
+            android:layout_height="25dp"
+            android:layout_weight="1"
+            android:src="@mipmap/face_small_icon"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_issueBlog_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/colorPrimaryDark"
+        android:padding="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:id="@+id/imageview_issueBlog_cancle"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:padding="5dp"
+            android:src="@mipmap/left_cancle_white"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="11"
+            android:gravity="center"
+            android:text="发布吐槽"
+            android:textSize="18sp"
+            android:textColor="@color/white" />
+
+        <TextView
+            android:id="@+id/textview_issueBlog_issueBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:singleLine="true"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:background="@drawable/shape_rectangle_white_noborder_allcorner_smaller"
+            android:text="发送"
+            android:textSize="15sp"
+            android:textColor="@color/selector_maincolor_to_lighter" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_issueBlog_center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:layout_below="@+id/layout_issueBlog_title"
+        android:layout_above="@+id/layout_issueBlog_bottom"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/textview_isssueBlog_bottomSpace_in"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_alignParentBottom="true"/>
+
+        <GridView
+            android:id="@+id/gridview_issueBlog_imageList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edittext_issueBlog_blogText"
+            android:layout_above="@+id/layout_issueBlog_issueToCityBlog"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:scrollbars="none"
+            android:numColumns="3"
+            android:horizontalSpacing="10dp"
+            android:verticalSpacing="10dp"/>
+
+        <LinearLayout
+            android:id="@+id/layout_issueBlog_issueToCityBlog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/imageview_issueBlog_isChoosedToIssueCityBlog"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@mipmap/rectangle_not_choosed_gray"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="同时发布到同城吐槽"
+                android:layout_marginLeft="5dp"
+                android:textSize="13sp"
+                android:textColor="#FFA9A9A9"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_issueBlog_isAnony"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_toLeftOf="@+id/layout_issueBlog_issueToCityBlog"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentBottom="true"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/imageview_issueBlog_isAnony"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@mipmap/rectangle_not_choosed_gray"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="匿名发布"
+                android:layout_marginLeft="5dp"
+                android:textSize="13sp"
+                android:textColor="#FFA9A9A9"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textview_issueBlog_remainingTextNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="剩余xx字"
+            android:textSize="13sp"
+            android:textColor="#FF58A9D6"/>
+
+        <io.github.rockerhieu.emojicon.EmojiconEditText
+            android:id="@+id/edittext_issueBlog_blogText"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@null"
+            android:gravity="start"
+            android:hint="随时随地吐槽小区..."
+            android:textSize="15sp"
+            android:textColor="#FF353535"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/layout_isssueBlog_emojiIcon"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_below="@+id/layout_issueBlog_bottom"
+        android:orientation="horizontal" />
+
+    <!--<TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#FFB2B2B2"
+        android:layout_above="@+id/layout_issueBlog_bottom"/>-->
+
+</RelativeLayout>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content" android:background="@color/white"
+    android:gravity="center"
+    android:paddingLeft="20dp" android:paddingRight="20dp"
+    android:paddingTop="10dp" android:paddingBottom="10dp">
+
+    <com.wanglinkeji.wanglin.customerview.CircleImageView
+        android:id="@+id/imageview_addFriendSearchListItem_header"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@mipmap/temp_header_one"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textview_addFriendSearchListItem_name"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:text="XXX"
+            android:textSize="17sp"
+            android:textColor="@color/black"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textview_addFriendSearchListItem_industry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="行业"
+                android:textSize="14sp"
+                android:textColor="#FF828282"/>
+
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="15dp"
+                android:layout_marginLeft="15dp"
+                android:background="#FF828282"/>
+
+            <TextView
+                android:id="@+id/textview_addFriendSearchListItem_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="标签"
+                android:textSize="14sp"
+                android:textColor="#FF828282"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:src="@mipmap/right_go"/>
+
+</LinearLayout>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content" android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/imageview_certifilerPropertyNewsItem_header"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_weight="1"
+        android:scaleType="fitXY"
+        android:src="@mipmap/pdd"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_marginLeft="10dp">
+
+        <TextView
+            android:id="@+id/textview_certifilerPropertyNewsItem_title"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:maxLines="2"
+            android:text="XXXXXXXXXXXXXXXXX"
+            android:textSize="16sp"
+            android:textColor="#FF585858"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:src="@mipmap/browse_count"/>
+
+            <TextView
+                android:id="@+id/textview_certifilerPropertyNewsItem_browseCount"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="5dp"
+                android:text="xxx"
+                android:textSize="13sp"
+                android:textColor="#FFB0B0B0"/>
+
+            <TextView
+                android:id="@+id/textview_certifilerPropertyNewsItem_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="08-22 13:44"
+                android:textSize="13sp"
+                android:textColor="#FFB0B0B0"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

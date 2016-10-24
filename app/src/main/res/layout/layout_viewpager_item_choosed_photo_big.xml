@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="@color/black">
+
+    <ImageView
+        android:id="@+id/imageview_viewPagerItem_choosedPhotoBig_photo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:id="@+id/layout_choosedPhoto_Big_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="10dp"
+        android:layout_alignParentBottom="true"
+        android:background="#EE393A3F">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <LinearLayout
+            android:id="@+id/layout_choosedPhoto_Big_bottom_isChoosed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/imageview_viewPagerItem_choosedPhotoBig_isChoosed"
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:src="@mipmap/rectangle_notchoosed_white"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="5dp"
+                android:text="选择"
+                android:textSize="16sp"
+                android:textColor="@color/selector_white_to_gray"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

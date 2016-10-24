@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="#FFE9EAEC">
+
+    <!--标题栏-->
+    <LinearLayout
+        android:id="@+id/layout_chat_title"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:background="@color/main_color_dark">
+
+        <ImageView
+            android:id="@+id/imageview_chat_cancle"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/left_cancle_white"/>
+
+        <TextView
+            android:id="@+id/textview_chat_chatName"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="XXX"
+            android:textSize="18sp"
+            android:textColor="@color/white"/>
+
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="10dp"/>
+
+    </LinearLayout><!--标题栏-->
+
+    <ListView
+        android:id="@+id/listview_chat_chatList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="#00000000"
+        android:dividerHeight="0dp"
+        android:layout_above="@+id/layout_chat_bottom"
+        android:layout_below="@+id/layout_chat_title"/>
+
+    <!--底部栏-->
+    <LinearLayout
+        android:id="@+id/layout_chat_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:padding="10dp">
+
+        <!--输入框-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:background="@drawable/shape_rectangle_white_noborder_allcorner">
+
+            <EditText
+                android:id="@+id/edittext_chat_content"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textCursorDrawable="@drawable/shape_cursor_drawable_chat"
+                android:background="@null"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"/>
+
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#FFE9EAEC"/>
+
+            <TextView
+                android:id="@+id/textview_chat_send"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="发送"
+                android:textSize="14sp"
+                android:textColor="@color/selector_blue29c_to_lighter"/>
+
+        </LinearLayout><!--输入框-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="10dp"
+            android:paddingBottom="5dp"
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/imageview_chat_voice"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_weight="1"
+                android:src="@mipmap/chat_voice"/>
+
+            <ImageView
+                android:id="@+id/imageview_chat_face"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_weight="1"
+                android:src="@mipmap/chat_face"/>
+
+            <ImageView
+                android:id="@+id/imageview_chat_picture"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_weight="1"
+                android:src="@mipmap/chat_picture"/>
+
+            <ImageView
+                android:id="@+id/imageview_chat_red_bag"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_weight="1"
+                android:src="@mipmap/chat_red_bag"/>
+
+        </LinearLayout>
+
+    </LinearLayout><!--底部栏-->
+
+</RelativeLayout>

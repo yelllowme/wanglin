@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="@mipmap/login_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.2">
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4.5"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.7"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="6.6"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="bottom">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="真实姓名："
+                    android:textSize="15sp"
+                    android:textColor="#FFEFF0F0"/>
+
+                <EditText
+                    android:id="@+id/edittext_bindingHousingEstate_realName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:inputType="none"
+                    android:textCursorDrawable="@drawable/shape_cursor_drawable_login"
+                    android:singleLine="true"
+                    android:textSize="15sp"
+                    android:textColor="#FFEFF0F0" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="#FF8A99A6"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="bottom">
+
+                <EditText
+                    android:id="@+id/edittext_bindingHousingEstate_searchHousingEstate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:imeOptions="actionSearch"
+                    android:hint="搜索您的小区"
+                    android:inputType="text"
+                    android:textCursorDrawable="@drawable/shape_cursor_drawable_login"
+                    android:textColorHint="#FF919AA5"
+                    android:singleLine="true"
+                    android:textSize="15sp"
+                    android:textColor="#FFEFF0F0" />
+
+                <ImageView
+                    android:id="@+id/imageview_bindingHousingEstate_searchIcon"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@mipmap/search_icon"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="#FF8A99A6"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="bottom">
+
+                <EditText
+                    android:id="@+id/edittext_bindingHousingEstate_ridgepoleNum"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:inputType="number"
+                    android:textCursorDrawable="@drawable/shape_cursor_drawable_login"
+                    android:singleLine="true"
+                    android:textSize="15sp"
+                    android:textColor="#FFEFF0F0" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="栋"
+                    android:textSize="15sp"
+                    android:textColor="@color/white"/>
+
+                <EditText
+                    android:id="@+id/edittext_bindingHousingEstate_unitNum"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:inputType="number"
+                    android:layout_marginLeft="20dp"
+                    android:textCursorDrawable="@drawable/shape_cursor_drawable_login"
+                    android:singleLine="true"
+                    android:textSize="15sp"
+                    android:textColor="#FFEFF0F0" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="单元"
+                    android:textSize="15sp"
+                    android:textColor="@color/white"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="#FF8A99A6"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="bottom">
+
+                <EditText
+                    android:id="@+id/edittext_bindingHousingEstate_floorNum"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:inputType="number"
+                    android:textCursorDrawable="@drawable/shape_cursor_drawable_login"
+                    android:singleLine="true"
+                    android:textSize="15sp"
+                    android:textColor="#FFEFF0F0" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="楼"
+                    android:textSize="15sp"
+                    android:textColor="@color/white"/>
+
+                <EditText
+                    android:id="@+id/edittext_bindingHousingEstate_roomNum"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:inputType="text"
+                    android:layout_marginLeft="20dp"
+                    android:textCursorDrawable="@drawable/shape_cursor_drawable_login"
+                    android:singleLine="true"
+                    android:textSize="15sp"
+                    android:textColor="#FFEFF0F0" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible"
+                    android:text="号"
+                    android:textSize="15sp"
+                    android:textColor="@color/white"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="号"
+                    android:textSize="15sp"
+                    android:textColor="@color/white"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:background="#FF8A99A6"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.7"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.6"/>
+
+        <TextView
+            android:id="@+id/textview_bindingHousingEstate_ensureBinding"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="6.6"
+            android:background="@drawable/shape_rectangle_blue_noborder_allcorner"
+            android:gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="认证身份"
+            android:textSize="16sp"
+            android:textColor="@color/selector_white_to_gray"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.6"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.3"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@mipmap/login_bottom_bg"/>
+
+        <TextView
+            android:id="@+id/textview_bindingHousingEstate_skip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="跳过"
+            android:textSize="15sp"
+            android:textColor="@color/selector_gray_to_ligher"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

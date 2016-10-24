@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content" android:background="#FFEFF1F3">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="10dp" />
+
+    <RelativeLayout
+        android:id="@+id/layout_myHouseEstateItem_title"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        android:background="@drawable/shape_rectangle_blue_noborder_topcorner">
+
+        <ImageView
+            android:layout_width="130dp"
+            android:layout_height="110dp"
+            android:layout_alignParentBottom="true"
+            android:scaleType="fitXY"
+            android:layout_marginLeft="20dp"
+            android:layout_toLeftOf="@+id/imageview_myHouseEstateItem_state_default"
+            android:src="@mipmap/house_icon"/>
+
+        <ImageView
+            android:id="@+id/imageview_myHouseEstateItem_state_default"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:scaleType="fitXY"
+            android:visibility="invisible"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/default_icon" />
+
+        <ImageView
+            android:id="@+id/imageview_myHouseEstateItem_state_checking"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:scaleType="fitXY"
+            android:visibility="invisible"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/checking_icon" />
+
+        <ImageView
+            android:id="@+id/imageview_myHouseEstateItem_state_notUpload"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:scaleType="fitXY"
+            android:visibility="invisible"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/not_upload_icon" />
+
+        <ImageView
+            android:id="@+id/imageview_myHouseEstateItem_state_notPass"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:scaleType="fitXY"
+            android:visibility="invisible"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/not_pass_icon" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="30dp">
+
+            <TextView
+                android:id="@+id/textview_myHouseEstateItem_houseName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="XXXXXXXXXXX"
+                android:textSize="18sp"
+                android:textColor="@color/white"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:src="@mipmap/proprietor_icon"/>
+
+                <TextView
+                    android:id="@+id/textview_myHouseEstateItem_userIdentity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="XX"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="@drawable/shape_rectangle_white_noborder_bottomcorner"
+        android:paddingLeft="30dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:id="@+id/textview_myHouseEstateItem_houseSite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="XX栋XX楼XX号"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:ellipsize="marquee"
+            android:singleLine="true"
+            android:textSize="14sp"
+            android:textColor="#FFA7A9AA"/>
+
+        <LinearLayout
+            android:id="@+id/layout_myHouseEstateItem_menuDialog"
+            android:layout_width="140dp"
+            android:layout_height="25dp"
+            android:orientation="horizontal"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/imageview_myHouseEstateItem_menuIcon"
+            android:background="@mipmap/dialog_box_icon"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/textview_myHouseEstateItem_deleteHouse"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="删除住房"
+                android:textSize="12sp"
+                android:textColor="#FFD5D7D8"/>
+
+            <TextView
+                android:id="@+id/textview_myHouseEstateItem_setDefaultHouse"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="设为默认"
+                android:textSize="12sp"
+                android:textColor="#FFA7A9AA"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageview_myHouseEstateItem_menuIcon"
+            android:layout_width="20dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/menu_icon"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

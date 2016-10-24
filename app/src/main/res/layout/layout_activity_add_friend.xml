@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ptr="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="#FFE9EAEC">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:background="@color/main_color_dark">
+
+        <ImageView
+            android:id="@+id/imageview_addFriend_cancle"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/left_cancle_white"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
+
+            <EditText
+                android:id="@+id/edittext_addFriend_phoneNum"
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@null"
+                android:singleLine="true"
+                android:imeOptions="actionSearch"
+                android:hint="输入手机号/小区名"
+                android:textColorHint="#FF737C82"
+                android:textSize="13sp"
+                android:textColor="#FF737C82"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/white"/>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageview_addFriend_search"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="10dp"
+            android:src="@mipmap/search_icon"/>
+
+    </LinearLayout>
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+        android:id="@+id/listview_addFriend_friendList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="11"
+        android:layout_marginTop="10dp"
+        android:scrollbars="none"
+        android:divider="@null"
+        ptr:ptrHeaderTextColor="@color/gray"/>
+
+</LinearLayout>

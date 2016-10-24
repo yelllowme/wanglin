@@ -1,0 +1,50 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
+
+    defaultConfig {
+        applicationId "com.wanglinkeji.wanglin"
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    useLibrary'org.apache.http.legacy'
+}
+
+task nativeLibsToJar(type: Zip, description: "create a jar archive of the native libs") {
+    destinationDir file("$projectDir/libs")
+    baseName "Native_Libs2"
+    extension "jar"
+    from fileTree(dir: "libs", include: "**/*.so")
+    into "lib"
+}
+
+tasks.withType(JavaCompile) {
+    compileTask -> compileTask.dependsOn(nativeLibsToJar)
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.4.0'
+    compile project(':libraries:PullToRefresh\\library')
+    compile project(':libraries:PhotoView\\library')
+    compile files('libs/universal-image-loader-1.9.3.jar')
+    compile files('libs/volley.jar')
+    compile files('libs/baidumapapi_v3_5_0.jar')
+    compile files('libs/locSDK_6.13.jar')
+    compile files('libs/xUtils-2.6.14.jar')
+    compile project(':emoji_library')
+    compile files('libs/gson-2.2.4.jar')
+    compile files('libs/Yuntx_IMLib_v5.3.0r.jar')
+}

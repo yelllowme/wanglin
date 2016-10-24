@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="@mipmap/login_bg">
+
+    <!--顶部标题栏：返回 + 保存-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.7"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/imageview_uploadIdentityImage_cancle"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            android:src="@mipmap/left_cancle_white"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="8"/>
+
+        <TextView
+            android:id="@+id/textview_uploadIdentityImage_finish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="保存"
+            android:textSize="15sp"
+            android:textColor="@color/selector_white_to_gray"/>
+
+    </LinearLayout><!--顶部标题栏：返回 + 保存-->
+
+    <!--中间上传图片部分-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6.8"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <!--左空白-->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.6"/>
+
+        <!--中间上传图片部分-->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="6.6"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <!--未上传身份证正面-->
+            <LinearLayout
+                android:id="@+id/layout_uploadIdentityImage_uploadIDCardImage_front_notFinish"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/shape_rectangle_gray_dashgap_allcorner">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:src="@mipmap/add_icon"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="上传身份证正面"
+                    android:textSize="15sp"
+                    android:textColor="#FFEFF0F1"/>
+
+            </LinearLayout><!--未上传身份证正面-->
+
+            <!--已上传身份证正面-->
+            <RelativeLayout
+                android:id="@+id/layout_uploadIdentityImage_uploadIDCardImage_front_finish"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:background="@drawable/shape_rectangle_gray_dashgap_allcorner">
+
+                <ImageView
+                    android:id="@+id/imageview_uploadIdentityImage_uploadIDCardImage_front_finish"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/ic_launcher"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#88000000"/>
+
+                <TextView
+                    android:id="@+id/yellow_space"
+                    android:layout_width="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_height="10dp" />
+
+                <ImageView
+                    android:id="@+id/add_idcard"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_above="@+id/yellow_space"
+                    android:src="@mipmap/finish_white_icon"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/yellow_space"
+                    android:layout_centerHorizontal="true"
+                    android:text="身份证正面已上传"
+                    android:textSize="15sp"
+                    android:textColor="#FFEFF0F1"/>
+
+            </RelativeLayout><!--已上传身份证正面-->
+
+            <!--空白-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.2"/>
+
+            <!--未上传身份证背面-->
+            <LinearLayout
+                android:id="@+id/layout_uploadIdentityImage_uploadIDCardImage_reverseSide_notFinish"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/shape_rectangle_gray_dashgap_allcorner">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:src="@mipmap/add_icon"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="上传身份证背面"
+                    android:textSize="15sp"
+                    android:textColor="#FFEFF0F1"/>
+
+            </LinearLayout><!--未上传身份证背面-->
+
+            <!--已上传身份证背面-->
+            <RelativeLayout
+                android:id="@+id/layout_uploadIdentityImage_uploadIDCardImage_reverseSide_finish"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:background="@drawable/shape_rectangle_gray_dashgap_allcorner">
+
+                <ImageView
+                    android:id="@+id/imageview_uploadIdentityImage_uploadIDCardImage_reverseSide_finish"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/ic_launcher"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#88000000"/>
+
+                <TextView
+                    android:id="@+id/yellow_space"
+                    android:layout_width="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_height="10dp" />
+
+                <ImageView
+                    android:id="@+id/add_idcard"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_above="@+id/yellow_space"
+                    android:src="@mipmap/finish_white_icon"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/yellow_space"
+                    android:layout_centerHorizontal="true"
+                    android:text="身份证背面已上传"
+                    android:textSize="15sp"
+                    android:textColor="#FFEFF0F1"/>
+
+            </RelativeLayout><!--已上传身份证背面-->
+
+            <!--空白-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.2"/>
+
+            <!--未上传房产证-->
+            <LinearLayout
+                android:id="@+id/layout_uploadIdentityImage_uploadHouseProprietaryCertificate_notFinish"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/shape_rectangle_gray_dashgap_allcorner">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:src="@mipmap/add_icon"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="业主上传房产证"
+                    android:textSize="15sp"
+                    android:textColor="#FFEFF0F1"/>
+
+            </LinearLayout><!--未上传房产证-->
+
+            <!--已上传房产证-->
+            <RelativeLayout
+                android:id="@+id/layout_uploadIdentityImage_uploadHouseProprietaryCertificate_finish"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:background="@drawable/shape_rectangle_gray_dashgap_allcorner">
+
+                <ImageView
+                    android:id="@+id/imageview_uploadIdentityImage_uploadHouseProprietaryCertificate_finish"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/ic_launcher"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#88000000"/>
+
+                <TextView
+                    android:id="@+id/yellow_space"
+                    android:layout_width="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_height="10dp" />
+
+                <ImageView
+                    android:id="@+id/add_idcard"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_above="@+id/yellow_space"
+                    android:src="@mipmap/finish_white_icon"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/yellow_space"
+                    android:layout_centerHorizontal="true"
+                    android:text="房产证已上传"
+                    android:textSize="15sp"
+                    android:textColor="#FFEFF0F1"/>
+
+            </RelativeLayout><!--已上传房产证-->
+
+            <!--空白-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.2"/>
+
+            <!--未上传租赁合同-->
+            <LinearLayout
+                android:id="@+id/layout_uploadIdentityImage_uploadRentContract_notFinish"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/shape_rectangle_gray_dashgap_allcorner">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:src="@mipmap/add_icon"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="租客上传租赁合同"
+                    android:textSize="15sp"
+                    android:textColor="#FFEFF0F1"/>
+
+            </LinearLayout><!--未上传租赁合同-->
+
+            <!--已上传租赁合同-->
+            <RelativeLayout
+                android:id="@+id/layout_uploadIdentityImage_uploadRentContract_finish"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:visibility="gone"
+                android:background="@drawable/shape_rectangle_gray_dashgap_allcorner">
+
+                <ImageView
+                    android:id="@+id/imageview_uploadIdentityImage_uploadRentContract_finish"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/ic_launcher"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#88000000"/>
+
+                <TextView
+                    android:id="@+id/yellow_space"
+                    android:layout_width="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_height="10dp" />
+
+                <ImageView
+                    android:id="@+id/add_idcard"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_above="@+id/yellow_space"
+                    android:src="@mipmap/finish_white_icon"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/yellow_space"
+                    android:layout_centerHorizontal="true"
+                    android:text="房屋租赁合同已上传"
+                    android:textSize="15sp"
+                    android:textColor="#FFEFF0F1"/>
+
+            </RelativeLayout><!--已上传租赁合同-->
+
+            <!--空白-->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.2"/>
+
+        </LinearLayout><!--中间上传图片部分-->
+
+        <!--右空白-->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.7"/>
+
+    </LinearLayout><!--中间上传图片部分-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.5">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@mipmap/login_bottom_bg"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerInParent="true"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/textview_uploadIdentityImage_whyUpload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="为什么要上传认证资料?"
+                android:textSize="15sp"
+                android:textColor="@color/selector_gray_to_ligher"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#FFDEE1E4"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

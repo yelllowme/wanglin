@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--系统标题（ActionBar）颜色-->
+    <color name="colorPrimary">#3F51B5</color>
+    <!--时间栏颜色-->
+    <color name="colorPrimaryDark">#FF1C262F</color>
+    <color name="colorAccent">#FF242F3A</color>
+
+    <color name="main_color">#FF242F3A</color>
+    <color name="main_color_dark">#FF1C262F</color>
+    <color name="main_color_lighter">#99242F3A</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color>
+    <color name="blue">#FF2B93C8</color>
+    <color name="blue_two">#FF58A4D0</color>
+    <color name="gray">#FFBCBEC0</color>
+    <color name="gray_lighter_one">#FFA3A3A3</color>
+    <color name="gray_lighter_two">#FFF0F0F0</color>
+    <color name="gray_dark_one">#FF939698</color>
+    <color name="gray_dark_two">#FF858585</color>
+    <color name="gray_dark_three">#FF343434</color>
+    <color name="gray_dark_four">#FF242F3A</color>
+    <color name="gray_dark_five_73">#FF737373</color>
+    <color name="gray_dark_six_d4">#FFD4DBE0</color>
+    <color name="gray_seven">#FFB8B8B8</color>
+    <color name="white_lighter">#AAFFFFFF</color>
+</resources>
