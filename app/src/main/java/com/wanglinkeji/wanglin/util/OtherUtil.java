@@ -193,7 +193,7 @@ public class OtherUtil {
         SimpleDateFormat format_min = new SimpleDateFormat("HH:mm");
         Date nowDate = new Date();
         try {
-            String nowStartTime = format_startDate.format(nowDate) + "00:00:00";
+            String nowStartTime = format_startDate.format(nowDate) + " 00:00:00";
             Date nowStartDate = format_full.parse(nowStartTime);
             long betweenTime = nowStartDate.getTime() - getDate.getTime();
             long day = 24 * 60 * 60 * 1000;

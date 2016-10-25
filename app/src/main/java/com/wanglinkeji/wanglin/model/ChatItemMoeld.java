@@ -1,5 +1,7 @@
 package com.wanglinkeji.wanglin.model;
 
+import com.wanglinkeji.wanglin.util.OtherUtil;
+
 import java.util.Date;
 
 /**
@@ -17,9 +19,9 @@ public class ChatItemMoeld {
 
     public static final int MESSAGE_FROM_ME = 1;
 
-    private String showDate;
-
     private Date realDate;
+
+    private boolean isShowDate;
 
     private int messageFrom;
 
@@ -36,6 +38,14 @@ public class ChatItemMoeld {
     private String myNickName;
 
     private String myContent;
+
+    public boolean isShowDate() {
+        return isShowDate;
+    }
+
+    public void setShowDate(boolean showDate) {
+        isShowDate = showDate;
+    }
 
     public int getMessageFrom() {
         return messageFrom;
@@ -54,11 +64,7 @@ public class ChatItemMoeld {
     }
 
     public String getShowDate() {
-        return showDate;
-    }
-
-    public void setShowDate(String showDate) {
-        this.showDate = showDate;
+        return OtherUtil.getCurrentTime(realDate);
     }
 
     public Date getRealDate() {

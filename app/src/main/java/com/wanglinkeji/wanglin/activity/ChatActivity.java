@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.wanglinkeji.wanglin.R;
 import com.wanglinkeji.wanglin.adapter.ListViewAdapter_Chat;
+import com.wanglinkeji.wanglin.customerview.xcpulltoloadmorelistview.XCPullToLoadMoreListView;
 import com.wanglinkeji.wanglin.model.ChatItemMoeld;
 import com.wanglinkeji.wanglin.model.PhotoModel;
 import com.wanglinkeji.wanglin.model.UserFriendModel;
@@ -28,6 +29,7 @@ import com.yuntongxun.ecsdk.im.ECMessageNotify;
 import com.yuntongxun.ecsdk.im.ECTextMessageBody;
 import com.yuntongxun.ecsdk.im.group.ECGroupNoticeMessage;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -44,6 +46,8 @@ public class ChatActivity extends Activity implements View.OnClickListener {
     private TextView textView_chatName, textView_send;
 
     private EditText editText_content;
+
+    private XCPullToLoadMoreListView xcPullToLoadMoreListView;
 
     private ListView listView_ChatList;
 
@@ -131,9 +135,47 @@ public class ChatActivity extends Activity implements View.OnClickListener {
         imageView_picture.setOnClickListener(this);
         imageView_redBag = (ImageView)findViewById(R.id.imageview_chat_red_bag);
         imageView_redBag.setOnClickListener(this);
-        listView_ChatList = (ListView)findViewById(R.id.listview_chat_chatList);
+        xcPullToLoadMoreListView = (XCPullToLoadMoreListView) findViewById(R.id.listview_chat_chatList);
+        listView_ChatList = xcPullToLoadMoreListView.getListView();
         listView_ChatList.setAdapter(listViewAdapter_chat);
         editText_content = (EditText)findViewById(R.id.edittext_chat_content);
+        editText_content.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                //获得焦点的时候
+                if (b == true){
+                    listView_ChatList.setSelection(list_chatItem.size() - 1);
+                }
+            }
+        });
+        xcPullToLoadMoreListView.setOnRefreshListener(new XCPullToLoadMoreListView.OnRefreshListener() {
+            @Override
+            public void onPullDownLoadMore() {
+                xcPullToLoadMoreListView.onRefreshComplete();
+            }
+        });
+    }
+
+    private boolean setChatItemIsShowDate(List<ChatItemMoeld> list_chatItem, Date getDate){
+        if (list_chatItem.size() == 0){
+            return true;
+        }
+        Date lastShowDate = getLastShowDate(list_chatItem);
+        if (lastShowDate != null){
+            if ((getDate.getTime() - lastShowDate.getTime())/(1000 * 60 * 5) > 0){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private Date getLastShowDate(List<ChatItemMoeld> list_chatItem){
+        for (int i = list_chatItem.size() - 1; i >= 0; i--){
+            if (list_chatItem.get(i).isShowDate() == true){
+                return list_chatItem.get(i).getRealDate();
+            }
+        }
+        return null;
     }
 
     private void setChatReceiveListener(){
@@ -158,9 +200,8 @@ public class ChatActivity extends Activity implements View.OnClickListener {
                     chatItemMoeld.setFriendContent(content);
                     Date date = new Date();
                     chatItemMoeld.setRealDate(date);
-                    chatItemMoeld.setShowDate(OtherUtil.getCurrentTime(date));
+                    chatItemMoeld.setShowDate(setChatItemIsShowDate(list_chatItem, date));
                     list_chatItem.add(chatItemMoeld);
-                    //listView_ChatList.setAdapter(new ListViewAdapter_Chat(list_chatItem, ChatActivity.this, R.layout.layout_listview_item_chat));
                     listViewAdapter_chat.notifyDataSetChanged();
                     listView_ChatList.setSelection(list_chatItem.size() - 1);
                 }
@@ -199,9 +240,8 @@ public class ChatActivity extends Activity implements View.OnClickListener {
         chatItemMoeld.setMyContent(content);
         Date date = new Date();
         chatItemMoeld.setRealDate(date);
-        chatItemMoeld.setShowDate(OtherUtil.getCurrentTime(date));
+        chatItemMoeld.setShowDate(setChatItemIsShowDate(list_chatItem, date));
         list_chatItem.add(chatItemMoeld);
-        //listView_ChatList.setAdapter(new ListViewAdapter_Chat(list_chatItem, ChatActivity.this, R.layout.layout_listview_item_chat));
         listViewAdapter_chat.notifyDataSetChanged();
         listView_ChatList.setSelection(list_chatItem.size() - 1);
 
@@ -226,9 +266,7 @@ public class ChatActivity extends Activity implements View.OnClickListener {
                 // 将发送的消息更新到本地数据库并刷新UI
                 Log.d("yellow_IM", "发送成功：" + content);
                 chatItemMoeld.setMessageSendState(ChatItemMoeld.MESSAGE_SEND_STATE_FINISH);
-                //listView_ChatList.setAdapter(new ListViewAdapter_Chat(list_chatItem, ChatActivity.this, R.layout.layout_listview_item_chat));
                 listViewAdapter_chat.notifyDataSetChanged();
-                listView_ChatList.setSelection(list_chatItem.size() - 1);
             }
             @Override
             public void onProgress(String msgId, int totalByte, int progressByte) {

@@ -87,7 +87,12 @@ public class ListViewAdapter_Chat extends BaseAdapter {
                 holder.progressBar_messageState.setVisibility(View.GONE);
             }
         }
-        holder.textView_date.setText(list_chatItem.get(position).getDate());
+        if (list_chatItem.get(position).isShowDate() == true){
+            holder.textView_date.setVisibility(View.VISIBLE);
+        }else {
+            holder.textView_date.setVisibility(View.GONE);
+        }
+        holder.textView_date.setText(list_chatItem.get(position).getShowDate());
         return view;
     }
 
