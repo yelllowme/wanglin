@@ -17,7 +17,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:gravity="center"
             android:orientation="horizontal">
 
             <!--头像栏-->
@@ -27,14 +26,14 @@
 
                 <com.wanglinkeji.wanglin.customerview.CircleImageView
                     android:id="@+id/imageview_listviewItem_housingEstate_header"
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_centerInParent="true"
                     android:src="@mipmap/pdd"/>
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:layout_alignParentRight="true"
                     android:visibility="gone"
                     android:layout_alignBottom="@+id/imageview_listviewItem_housingEstate_header"
@@ -80,7 +79,7 @@
                         android:layout_height="wrap_content"
                         android:text="XXX"
                         android:textColor="@color/black"
-                        android:textSize="18sp"/>
+                        android:textSize="15sp"/>
 
                     <!--勋章栏-->
                     <LinearLayout
@@ -92,19 +91,19 @@
                         android:paddingRight="10dp">
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
                             android:src="@mipmap/car_authentication"/>
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
                             android:layout_marginLeft="10dp"
                             android:src="@mipmap/identity_authentication"/>
 
                         <ImageView
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
                             android:layout_marginLeft="10dp"
                             android:src="@mipmap/education_authentication"/>
 
@@ -131,8 +130,8 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
                         android:src="@mipmap/industry_icon"/>
 
                     <TextView
@@ -142,12 +141,12 @@
                         android:layout_marginLeft="5dp"
                         android:gravity="center"
                         android:text="xxx"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:textColor="@color/gray_dark_two"/>
 
                     <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="18dp"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
                         android:layout_marginLeft="15dp"
                         android:src="@mipmap/label_icon"/>
 
@@ -157,7 +156,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="5dp"
                         android:text="xxx"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:textColor="@color/gray_dark_two"/>
 
                     <TextView
@@ -171,7 +170,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:text="xx:xx"
-                        android:textSize="14sp"
+                        android:textSize="12sp"
                         android:textColor="@color/gray_dark_two"/>
 
                 </LinearLayout><!--标签，行业，时间栏-->
@@ -233,7 +232,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="查看所有评论"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:textColor="@color/gray_dark_four"/>
 
             </LinearLayout><!--详细ListView栏-->
@@ -283,8 +282,8 @@
                 android:gravity="center">
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:src="@mipmap/add_common_icon"/>
 
                 <TextView
@@ -293,7 +292,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="xx"
-                    android:textSize="15sp"
+                    android:textSize="12sp"
                     android:textColor="@color/gray_lighter_one"/>
 
             </LinearLayout><!--评论栏-->
@@ -307,8 +306,8 @@
 
                 <ImageView
                     android:id="@+id/imageview_listviewItem_housingEstate_addGood"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:src="@mipmap/praise_icon_gray"/>
 
                 <TextView
@@ -317,7 +316,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="xx"
-                    android:textSize="15sp"
+                    android:textSize="12sp"
                     android:textColor="@color/gray_lighter_one"/>
 
             </LinearLayout> <!--点赞栏-->
@@ -345,8 +344,8 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:layout_width="55dp"
-                    android:layout_height="55dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_centerInParent="true"
                     android:src="@mipmap/anonymity_header"/>
 
@@ -367,7 +366,7 @@
                     android:layout_centerVertical="true"
                     android:text="匿名"
                     android:textColor="@color/black"
-                    android:textSize="18sp"/>
+                    android:textSize="15sp"/>
 
                 <TextView
                     android:layout_width="0dp"
@@ -413,7 +412,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:text="xx:xx"
-                            android:textSize="14sp"
+                            android:textSize="12sp"
                             android:textColor="@color/gray_dark_two"/>
 
                     </LinearLayout>
@@ -477,7 +476,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
                     android:text="查看所有评论"
-                    android:textSize="14sp"
+                    android:textSize="12sp"
                     android:textColor="@color/gray_dark_four"/>
 
             </LinearLayout><!--详细ListView栏-->
@@ -527,8 +526,8 @@
                 android:gravity="center">
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:src="@mipmap/add_common_icon"/>
 
                 <TextView
@@ -537,7 +536,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="xx"
-                    android:textSize="15sp"
+                    android:textSize="12sp"
                     android:textColor="@color/gray_lighter_one"/>
 
             </LinearLayout><!--评论栏-->
@@ -551,8 +550,8 @@
 
                 <ImageView
                     android:id="@+id/imageview_listviewItem_housingEstate_addGood_anony"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
                     android:src="@mipmap/praise_icon_gray"/>
 
                 <TextView
@@ -561,7 +560,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"
                     android:text="xx"
-                    android:textSize="15sp"
+                    android:textSize="12sp"
                     android:textColor="@color/gray_lighter_one"/>
 
             </LinearLayout> <!--点赞栏-->

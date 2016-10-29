@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:text="XX"
         android:textColor="@color/gray_dark_four"
-        android:textSize="14sp"/>
+        android:textSize="12sp"/>
 
     <TextView
         android:id="@+id/textview_listviewItem_housingEstate_comment_AtUserName"
@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:text="/@xx"
-        android:textSize="15sp"
+        android:textSize="13sp"
         android:textColor="#FF3B8EB0"/>
 
     <TextView
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:textColor="@color/gray_dark_four"
         android:text="："
-        android:textSize="14sp"/>
+        android:textSize="12sp"/>
 
     <io.github.rockerhieu.emojicon.EmojiconTextView
         android:id="@+id/textview_listviewItem_housingEstate_comment_details"
@@ -33,6 +33,6 @@
         android:layout_height="wrap_content"
         android:text="xxxxxxxxxxxxxxx"
         android:textColor="@color/gray_dark_five_73"
-        android:textSize="14sp"/>
+        android:textSize="12sp"/>
 
 </LinearLayout>
