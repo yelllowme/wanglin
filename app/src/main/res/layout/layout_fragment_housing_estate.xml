@@ -23,17 +23,17 @@
             android:orientation="horizontal">
 
             <LinearLayout
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:orientation="horizontal"
                 android:padding="5dp"
+                android:layout_marginLeft="25dp"
                 android:gravity="center">
 
                 <ImageView
                     android:id="@+id/imageview_homePage_housingEstateFragment_weather"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
                     android:scaleType="fitXY"
                     android:src="@mipmap/common_weather_icon"/>
 
@@ -44,7 +44,7 @@
                     android:gravity="center"
                     android:layout_marginLeft="5dp"
                     android:text="xx°"
-                    android:textSize="20sp"
+                    android:textSize="14sp"
                     android:textColor="#FF9BA0A3"/>
 
             </LinearLayout>
@@ -55,7 +55,6 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2.5"
                 android:gravity="center"
-                android:textStyle="bold"
                 android:ellipsize="marquee"
                 android:focusable="true"
                 android:marqueeRepeatLimit="marquee_forever"
@@ -63,21 +62,31 @@
                 android:scrollHorizontally="true"
                 android:singleLine="true"
                 android:text="网邻"
-                android:textSize="18sp"
+                android:textSize="15sp"
                 android:textColor="@color/white"/>
 
             <LinearLayout
                 android:id="@+id/layout_homePage_housingEstateFragment_search"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:padding="5dp"
+                android:layout_marginRight="25dp"
                 android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:visibility="invisible"
+                    android:text="xx°"
+                    android:textSize="14sp"
+                    android:textColor="#FF9BA0A3"/>
 
                 <ImageView
                     android:id="@+id/imageview_homePage_housingEstateFragment_search"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_weight="1"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
                     android:src="@mipmap/search_icon"/>
 
             </LinearLayout>
@@ -111,7 +120,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:text="小区吐槽"
-                        android:textSize="17sp"
+                        android:textSize="14sp"
                         android:textColor="@color/white"/>
 
                     <!--<ImageView
@@ -145,7 +154,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="同城吐槽"
-                    android:textSize="17sp"
+                    android:textSize="14sp"
                     android:textColor="@color/white"/>
 
                 <ImageView
@@ -171,7 +180,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="大事件"
-                    android:textSize="17sp"
+                    android:textSize="14sp"
                     android:textColor="@color/white"/>
 
                 <ImageView
