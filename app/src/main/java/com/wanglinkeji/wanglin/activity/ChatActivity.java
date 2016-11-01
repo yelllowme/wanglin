@@ -1,19 +1,24 @@
 package com.wanglinkeji.wanglin.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.wanglinkeji.wanglin.R;
 import com.wanglinkeji.wanglin.adapter.ListViewAdapter_Chat;
+import com.wanglinkeji.wanglin.customerview.recordbutton.AudioRecorder;
+import com.wanglinkeji.wanglin.customerview.recordbutton.RecordButton;
 import com.wanglinkeji.wanglin.customerview.xcpulltoloadmorelistview.XCPullToLoadMoreListView;
 import com.wanglinkeji.wanglin.model.ChatItemMoeld;
 import com.wanglinkeji.wanglin.model.PhotoModel;
@@ -27,8 +32,10 @@ import com.yuntongxun.ecsdk.ECMessage;
 import com.yuntongxun.ecsdk.OnChatReceiveListener;
 import com.yuntongxun.ecsdk.im.ECMessageNotify;
 import com.yuntongxun.ecsdk.im.ECTextMessageBody;
+import com.yuntongxun.ecsdk.im.ECVoiceMessageBody;
 import com.yuntongxun.ecsdk.im.group.ECGroupNoticeMessage;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -43,7 +50,11 @@ public class ChatActivity extends Activity implements View.OnClickListener {
 
     private ImageView imageView_cancle, imageView_voice, imageView_face, imageView_picture, imageView_redBag;
 
-    private TextView textView_chatName, textView_send;
+    private LinearLayout layout_record, layout_text;
+
+    private RecordButton recordButton;
+
+    private TextView textView_chatName, textView_send, textView_changeToText;
 
     private EditText editText_content;
 
@@ -89,12 +100,27 @@ public class ChatActivity extends Activity implements View.OnClickListener {
             }
             //发送按钮
             case R.id.textview_chat_send:{
-                sendTextMessage(editText_content.getText().toString());
-                editText_content.setText("");
+                if (editText_content.getText().length() == 0){
+                    Toast.makeText(ChatActivity.this, "发送内容不能为空哦！", Toast.LENGTH_SHORT).show();
+                }else {
+                    sendTextMessage(editText_content.getText().toString());
+                    editText_content.setText("");
+                }
                 break;
             }
             //语音按钮
             case R.id.imageview_chat_voice:{
+                layout_record.setVisibility(View.VISIBLE);
+                layout_text.setVisibility(View.GONE);
+                //强制隐藏键盘
+                ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).showSoftInput(view,InputMethodManager.SHOW_FORCED);
+                ((InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(view.getWindowToken(), 0);
+                break;
+            }
+            //"文字"按钮
+            case R.id.textview_chat_changeToText:{
+                layout_record.setVisibility(View.GONE);
+                layout_text.setVisibility(View.VISIBLE);
                 break;
             }
             //表情按钮
@@ -121,6 +147,10 @@ public class ChatActivity extends Activity implements View.OnClickListener {
     }
 
     private void viewInit(){
+        layout_record = (LinearLayout)findViewById(R.id.layout_chat_record);
+        layout_text = (LinearLayout)findViewById(R.id.layout_chat_text);
+        textView_changeToText = (TextView)findViewById(R.id.textview_chat_changeToText);
+        textView_changeToText.setOnClickListener(this);
         imageView_cancle = (ImageView)findViewById(R.id.imageview_chat_cancle);
         imageView_cancle.setOnClickListener(this);
         textView_chatName = (TextView)findViewById(R.id.textview_chat_chatName);
@@ -152,6 +182,14 @@ public class ChatActivity extends Activity implements View.OnClickListener {
             @Override
             public void onPullDownLoadMore() {
                 xcPullToLoadMoreListView.onRefreshComplete();
+            }
+        });
+        recordButton = (RecordButton)findViewById(R.id.button_chat_recordButton);
+        recordButton.setAudioRecord(new AudioRecorder());
+        recordButton.setRecordListener(new RecordButton.RecordListener() {
+            @Override
+            public void recordEnd(String filePath) {
+                sendVoiceMessage(filePath);
             }
         });
     }
@@ -234,6 +272,7 @@ public class ChatActivity extends Activity implements View.OnClickListener {
 
     private void sendTextMessage(final String content){
         final ChatItemMoeld chatItemMoeld = new ChatItemMoeld();
+        chatItemMoeld.setMessageType(ChatItemMoeld.MESSAGE_TYPE_TEXT);
         chatItemMoeld.setMessageFrom(ChatItemMoeld.MESSAGE_FROM_ME);
         chatItemMoeld.setMessageSendState(ChatItemMoeld.MESSAGE_SEND_STATE_ING);
         chatItemMoeld.setMyNickName(UserIdentityInfoModel.userName);
@@ -263,10 +302,69 @@ public class ChatActivity extends Activity implements View.OnClickListener {
                 if(message == null) {
                     return ;
                 }
-                // 将发送的消息更新到本地数据库并刷新UI
-                Log.d("yellow_IM", "发送成功：" + content);
-                chatItemMoeld.setMessageSendState(ChatItemMoeld.MESSAGE_SEND_STATE_FINISH);
-                listViewAdapter_chat.notifyDataSetChanged();
+                if (error.errorCode == 200){
+                    // 将发送的消息更新到本地数据库并刷新UI
+                    //Log.d("yellow_IM", "发送成功：" + content);
+                    chatItemMoeld.setMessageSendState(ChatItemMoeld.MESSAGE_SEND_STATE_FINISH);
+                    listViewAdapter_chat.notifyDataSetChanged();
+                }else {
+                    chatItemMoeld.setMessageSendState(ChatItemMoeld.MESSAGE_SEND_STATE_FAILED);
+                    listViewAdapter_chat.notifyDataSetChanged();
+                }
+            }
+            @Override
+            public void onProgress(String msgId, int totalByte, int progressByte) {
+                // 处理文件发送上传进度（尽上传文件、图片时候SDK回调该方法）
+            }
+        });
+    }
+
+    private void sendVoiceMessage(String filePath){
+        final ChatItemMoeld chatItemMoeld = new ChatItemMoeld();
+        chatItemMoeld.setMessageType(ChatItemMoeld.MESSAGE_TYPE_VOICE);
+        chatItemMoeld.setMessageFrom(ChatItemMoeld.MESSAGE_FROM_ME);
+        chatItemMoeld.setMessageSendState(ChatItemMoeld.MESSAGE_SEND_STATE_ING);
+        chatItemMoeld.setMyNickName(UserIdentityInfoModel.userName);
+        chatItemMoeld.setVoicePlayState(ChatItemMoeld.VOICE_PLAY_STATE_STOP);
+        chatItemMoeld.setVoiceLength(OtherUtil.getVoiceTimeByFileLength(filePath));
+        chatItemMoeld.setLocalVoicePath(filePath);
+        Date date = new Date();
+        chatItemMoeld.setRealDate(date);
+        chatItemMoeld.setShowDate(setChatItemIsShowDate(list_chatItem, date));
+        list_chatItem.add(chatItemMoeld);
+        listViewAdapter_chat.notifyDataSetChanged();
+        listView_ChatList.setSelection(list_chatItem.size() - 1);
+
+        // 组建一个待发送的ECMessage
+        ECMessage message = ECMessage.createECMessage(ECMessage.Type.VOICE);
+        // 设置消息接收者
+        message.setTo(UserFriendModel.list_friends.get(UserFriendModel.chatPosition).getPhone());
+        // 设置语音包体,语音录制文件需要保存的目录
+        ECVoiceMessageBody messageBody = new ECVoiceMessageBody(new File(filePath), 0);
+        message.setBody(messageBody);
+        // 调用SDK发送接口发送消息到服务器
+        ECChatManager manager = ECDevice.getECChatManager();
+        manager.sendMessage(message, new ECChatManager.OnSendMessageListener() {
+            @Override
+            public void onSendMessageComplete(ECError error, ECMessage message) {
+                // 处理消息发送结果
+                if(message == null) {
+                    return ;
+                }
+                if (error.errorCode == 200){
+                    // 将发送的消息更新到本地数据库并刷新UI
+                    //Log.d("yellow_IM", "发送成功：" + content);
+                    //获取语音发送成功之后的URL
+                    // 在这里处理语音消息
+                    ECVoiceMessageBody voiceMsgBody = (ECVoiceMessageBody) message.getBody();
+                    chatItemMoeld.setVoiceUrl(voiceMsgBody.getRemoteUrl());
+                    chatItemMoeld.setMessageSendState(ChatItemMoeld.MESSAGE_SEND_STATE_FINISH);
+                    listViewAdapter_chat.notifyDataSetChanged();
+                    //Log.d("yellow_temp", "voiceLength = " + voiceMsgBody.getDuration() + "   voiceUrl = " + voiceMsgBody.getRemoteUrl());
+                }else {
+                    chatItemMoeld.setMessageSendState(ChatItemMoeld.MESSAGE_SEND_STATE_FAILED);
+                    listViewAdapter_chat.notifyDataSetChanged();
+                }
             }
             @Override
             public void onProgress(String msgId, int totalByte, int progressByte) {

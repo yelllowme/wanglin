@@ -58,6 +58,7 @@
 
         <!--输入框-->
         <LinearLayout
+            android:id="@+id/layout_chat_text"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:orientation="horizontal"
@@ -88,6 +89,42 @@
                 android:textColor="@color/selector_blue29c_to_lighter"/>
 
         </LinearLayout><!--输入框-->
+
+        <!--语音框-->
+        <LinearLayout
+            android:id="@+id/layout_chat_record"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:visibility="gone"
+            android:orientation="horizontal"
+            android:background="@drawable/shape_rectangle_white_noborder_allcorner">
+
+            <com.wanglinkeji.wanglin.customerview.recordbutton.RecordButton
+                android:id="@+id/button_chat_recordButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:textCursorDrawable="@drawable/shape_cursor_drawable_chat"
+                android:background="@null"
+                android:textColor="#FF2992C9"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"/>
+
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="#FFE9EAEC"/>
+
+            <TextView
+                android:id="@+id/textview_chat_changeToText"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="文字"
+                android:textSize="14sp"
+                android:textColor="@color/selector_blue29c_to_lighter"/>
+
+        </LinearLayout><!--语音框-->
 
         <LinearLayout
             android:layout_width="match_parent"

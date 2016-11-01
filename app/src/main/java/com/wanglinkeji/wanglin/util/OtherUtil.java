@@ -211,4 +211,25 @@ public class OtherUtil {
         }
         return format_full.format(getDate);
     }
+
+    /**
+     * 根据音频文件的大小计算音频的秒数
+     * @param file
+     * @return
+     */
+    public static int getVoiceTimeByFileLength(String file) {
+        File _file = new File(file);
+        if (!_file.exists()) {
+            return 0;
+        }
+        // 650个字节就是1s
+        int duration = (int) Math.ceil(_file.length() / 650);
+        if (duration > 60) {
+            return 60;
+        }
+        if (duration < 1) {
+            return 1;
+        }
+        return duration;
+    }
 }

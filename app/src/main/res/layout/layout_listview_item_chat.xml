@@ -43,16 +43,83 @@
                 android:textSize="13sp"
                 android:textColor="#FFA1A2A4"/>
 
-            <TextView
-                android:id="@+id/textview_chatItem_friendContent"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/shape_rectangle_white_noborder_left_top_corner"
-                android:padding="10dp"
-                android:text="How are you?"
-                android:textSize="14sp"
-                android:textColor="@color/black"/>
+                android:orientation="horizontal">
+
+                <!--正文-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="10dp"
+                    android:background="@drawable/shape_rectangle_white_noborder_left_top_corner">
+
+                    <TextView
+                        android:id="@+id/textview_chatItem_friendContent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="How are you?"
+                        android:textSize="14sp"
+                        android:textColor="@color/black"/>
+
+                    <LinearLayout
+                        android:id="@+id/layout_chatItem_friendVoice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textview_chatItem_friendVoice"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:background="@mipmap/voice_stop_icon"/>
+
+                        <TextView
+                            android:id="@+id/textview_chatItem_friendVoiceSpace"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/imageview_chatItem_friendImage"
+                        android:layout_width="100dp"
+                        android:layout_height="120dp"
+                        android:scaleType="fitXY"/>
+
+                </LinearLayout><!--正文-->
+
+                <!--状态栏-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textview_chatItem_friendVoiceLength"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="11''"
+                        android:textSize="12sp"
+                        android:textColor="@color/white"/>
+
+                    <ImageView
+                        android:id="@+id/imageview_chatItem_friendVoiceIsRead"
+                        android:layout_width="5dp"
+                        android:layout_height="5dp"
+                        android:layout_marginLeft="10dp"
+                        android:src="@drawable/shape_circle_redd33"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
 
         </LinearLayout>
 
@@ -108,15 +175,65 @@
                     android:indeterminateDrawable="@anim/anim_loading"
                     android:indeterminateDuration="1500"/>
 
+                <ImageView
+                    android:id="@+id/imageview_chatItem_sendFailed"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_centerInParent="true"
+                    android:src="@mipmap/message_send_failed"/>
+
                 <TextView
-                    android:id="@+id/textview_chatItem_myContent"
+                    android:id="@+id/textview_chatItem_myVoiceLength"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:text="11''"
+                    android:textSize="12sp"
+                    android:textColor="@color/white"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:background="@drawable/shape_rectangle_blue29c_noborder_righte_top_corner"
                     android:padding="10dp"
-                    android:text="Fine thanks,And you?"
-                    android:textSize="14sp"
-                    android:textColor="@color/white"/>
+                    android:gravity="right">
+
+                    <TextView
+                        android:id="@+id/textview_chatItem_myContent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Fine thanks,And you?"
+                        android:textSize="14sp"
+                        android:textColor="@color/white"/>
+
+                    <LinearLayout
+                        android:id="@+id/layout_chatItem_myVoice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textview_chatItem_myVoiceSpace"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:id="@+id/textview_chatItem_myVoice"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:background="@mipmap/voice_stop_icon"/>
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/imageview_chatItem_myImage"
+                        android:layout_width="100dp"
+                        android:layout_height="120dp"
+                        android:scaleType="fitXY"/>
+
+                </LinearLayout>
 
             </LinearLayout>
 
