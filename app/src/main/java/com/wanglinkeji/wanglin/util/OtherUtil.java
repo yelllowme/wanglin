@@ -232,4 +232,17 @@ public class OtherUtil {
         }
         return duration;
     }
+
+    public static int getVoiceTimeByFileLength(long fileLength) {
+        // 650个字节就是1s
+        int duration = (int) Math.ceil(fileLength / 650);
+
+        if (duration > 60) {
+            return 60;
+        }
+        if (duration < 1) {
+            return 1;
+        }
+        return duration;
+    }
 }

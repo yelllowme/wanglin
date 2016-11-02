@@ -69,6 +69,16 @@ public class ChatItemMoeld {
 
     private int voiceReadState;
 
+    private String imageLocalPath;
+
+    public String getImageLocalPath() {
+        return imageLocalPath;
+    }
+
+    public void setImageLocalPath(String imageLocalPath) {
+        this.imageLocalPath = imageLocalPath;
+    }
+
     public int getVoiceReadState() {
         return voiceReadState;
     }

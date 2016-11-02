@@ -1,6 +1,8 @@
 package com.wanglinkeji.wanglin.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
 import android.view.LayoutInflater;
@@ -12,14 +14,21 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.download.ImageDownloader;
 import com.wanglinkeji.wanglin.R;
+import com.wanglinkeji.wanglin.activity.BigImage_ChatActivity;
+import com.wanglinkeji.wanglin.activity.NineImage_BigActivity;
 import com.wanglinkeji.wanglin.customerview.CircleImageView;
 import com.wanglinkeji.wanglin.customerview.recordbutton.MediaPlayerManager;
 import com.wanglinkeji.wanglin.model.ChatItemMoeld;
+import com.wanglinkeji.wanglin.model.SwpeingImageModel;
 import com.wanglinkeji.wanglin.util.OtherUtil;
 import com.wanglinkeji.wanglin.util.WangLinApplication;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,6 +43,15 @@ public class ListViewAdapter_Chat extends BaseAdapter {
     private Context context;
 
     private int resource;
+
+    //显示图片的配置
+    private DisplayImageOptions options = new DisplayImageOptions.Builder()
+            .showImageOnLoading(R.drawable.shape_rectangle_black_noborder_nocorner)
+            .showImageOnFail(R.drawable.shape_rectangle_gray_noborder_nocorner)
+            .cacheInMemory(true)
+            .cacheOnDisk(true)
+            .bitmapConfig(Bitmap.Config.RGB_565)
+            .build();
 
     public ListViewAdapter_Chat(List<ChatItemMoeld> list_chatItem, Context context, int resource){
         this.list_chatItem = list_chatItem;
@@ -113,7 +131,7 @@ public class ListViewAdapter_Chat extends BaseAdapter {
                 holder.imageView_friendImage.setVisibility(View.GONE);
                 holder.textView_friendVoiceLength.setVisibility(View.VISIBLE);
                 if (list_chatItem.get(position).getVoiceReadState() == ChatItemMoeld.VOICE_READ_STATE_HAS_READ){
-                    holder.imageView_friendVoiceIsRead.setVisibility(View.GONE);
+                    holder.imageView_friendVoiceIsRead.setVisibility(View.INVISIBLE);
                 }else if (list_chatItem.get(position).getVoiceReadState() == ChatItemMoeld.VOICE_READ_STATE_NOT_READ){
                     holder.imageView_friendVoiceIsRead.setVisibility(View.VISIBLE);
                 }
@@ -125,7 +143,7 @@ public class ListViewAdapter_Chat extends BaseAdapter {
                     public void onClick(View view) {
                         if (list_chatItem.get(position).getVoiceReadState() == ChatItemMoeld.VOICE_READ_STATE_NOT_READ){
                             list_chatItem.get(position).setVoiceReadState(ChatItemMoeld.VOICE_READ_STATE_HAS_READ);
-                            holder.imageView_friendVoiceIsRead.setVisibility(View.GONE);
+                            holder.imageView_friendVoiceIsRead.setVisibility(View.INVISIBLE);
                         }
                         if (list_chatItem.get(position).getVoicePlayState() == ChatItemMoeld.VOICE_PLAY_STATE_START){
                             holder.textView_friednVoice.setBackgroundResource(R.mipmap.voice_stop_icon);
@@ -155,10 +173,18 @@ public class ListViewAdapter_Chat extends BaseAdapter {
                 holder.imageView_friendImage.setVisibility(View.VISIBLE);
                 holder.imageView_friendVoiceIsRead.setVisibility(View.GONE);
                 holder.textView_friendVoiceLength.setVisibility(View.GONE);
+                ImageLoader.getInstance().displayImage(list_chatItem.get(position).getImageUrl(), holder.imageView_friendImage, options);
                 holder.imageView_friendImage.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
+                        List<SwpeingImageModel> list_images = new ArrayList<SwpeingImageModel>();
+                        SwpeingImageModel swpeingImageModel = new SwpeingImageModel();
+                        swpeingImageModel.setUrl(list_chatItem.get(position).getImageUrl());
+                        list_images.add(swpeingImageModel);
+                        SwpeingImageModel.list_nineImage = list_images;
+                        SwpeingImageModel.current_position = 0;
+                        Intent intent = new Intent(context, NineImage_BigActivity.class);
+                        context.startActivity(intent);
                     }
                 });
             }
@@ -231,10 +257,22 @@ public class ListViewAdapter_Chat extends BaseAdapter {
                 holder.layout_myVoice.setVisibility(View.GONE);
                 holder.imageView_myImage.setVisibility(View.VISIBLE);
                 holder.textView_myVoiceLength.setVisibility(View.GONE);
+                //判断本地图片是否存在，存在则显示本地图片，不存在则加载网络图片
+                File file = new File(list_chatItem.get(position).getImageLocalPath());
+                if (file.isFile() && file.exists()){
+                    //用ImageLoader显示照片
+                    ImageLoader imageLoader = ImageLoader.getInstance();
+                    imageLoader.displayImage(ImageDownloader.Scheme.FILE.wrap(list_chatItem.get(position).getImageLocalPath()), holder.imageView_myImage,options);
+                }else {
+                    ImageLoader.getInstance().displayImage(list_chatItem.get(position).getImageUrl(), holder.imageView_myImage, options);
+                }
                 holder.imageView_myImage.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                                           }
+                        Intent intent = new Intent(context, BigImage_ChatActivity.class);
+                        intent.putExtra("path", list_chatItem.get(position).getImageLocalPath());
+                        context.startActivity(intent);
+                    }
                 });
             }
 
