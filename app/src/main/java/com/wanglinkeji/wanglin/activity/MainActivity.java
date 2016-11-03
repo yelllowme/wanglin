@@ -1,5 +1,8 @@
 package com.wanglinkeji.wanglin.activity;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +12,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -25,6 +29,7 @@ import com.wanglinkeji.wanglin.util.DBUtil;
 import com.wanglinkeji.wanglin.util.HttpUtil;
 import com.wanglinkeji.wanglin.util.LogoutActivityCollector;
 import com.wanglinkeji.wanglin.util.OtherUtil;
+import com.wanglinkeji.wanglin.util.WangLinApplication;
 import com.wanglinkeji.wanglin.util.WanglinHttpResponseListener;
 import com.yuntongxun.ecsdk.ECDevice;
 import com.yuntongxun.ecsdk.ECError;
@@ -32,8 +37,10 @@ import com.yuntongxun.ecsdk.ECInitParams;
 import com.yuntongxun.ecsdk.ECMessage;
 import com.yuntongxun.ecsdk.OnChatReceiveListener;
 import com.yuntongxun.ecsdk.SdkErrorCode;
+import com.yuntongxun.ecsdk.im.ECImageMessageBody;
 import com.yuntongxun.ecsdk.im.ECMessageNotify;
 import com.yuntongxun.ecsdk.im.ECTextMessageBody;
+import com.yuntongxun.ecsdk.im.ECVoiceMessageBody;
 import com.yuntongxun.ecsdk.im.group.ECGroupNoticeMessage;
 
 import org.json.JSONArray;
@@ -41,6 +48,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -422,21 +430,28 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
         }
     }
 
-    private void setIM_OnChatReceiveListener(){
+    public static void setIM_OnChatReceiveListener(){
         //IM接收消息监听，使用IM功能的开发者需要设置。
         ECDevice.setOnChatReceiveListener(new OnChatReceiveListener() {
             @Override
             public void OnReceivedMessage(ECMessage msg) {
-                Log.d("yellow_IM", "MainActivity---OnReceiveMessage()");
+                //Log.d("yellow_IM", "MainActivity---OnReceiveMessage()");
                 if(msg == null) {
                     return ;
                 }
+                //发出通知
+                WangLinApplication.notificationManager.notify((new Long((new Date()).getTime())).intValue(), WangLinApplication.notificationBuilder.build());
+
+                //处理消息
                 ECMessage.Type type = msg.getType();
                 if(type == ECMessage.Type.TXT) {
-                    // 在这里处理文本消息
                     ECTextMessageBody textMessageBody = (ECTextMessageBody) msg.getBody();
-                    String content = textMessageBody.getMessage();
-                    Log.d("yellow_IM", "（MainActivity）接收消息：" + content);
+                }else if (type == ECMessage.Type.VOICE){
+                    ECVoiceMessageBody voiceMsgBody = (ECVoiceMessageBody) msg.getBody();
+
+                }else if (type == ECMessage.Type.IMAGE){
+                    ECImageMessageBody imageMsgBody = (ECImageMessageBody) msg.getBody();
+
                 }
                 // 根据不同类型处理完消息之后，将消息序列化到本地存储（sqlite）
                 // 通知UI有新消息到达
@@ -447,13 +462,28 @@ public class MainActivity extends FragmentActivity implements View.OnClickListen
             @Override
             public void OnReceiveGroupNoticeMessage(ECGroupNoticeMessage ecGroupNoticeMessage) {}
             @Override
-            public void onOfflineMessageCount(int i) {}
-            @Override
-            public int onGetOfflineMessage() {
-                return 0;
+            public void onOfflineMessageCount(int i) {
+                if (i > 0){
+                    WangLinApplication.notificationManager.notify((new Long((new Date()).getTime())).intValue(), WangLinApplication.notificationBuilder.build());
+                }
             }
             @Override
-            public void onReceiveOfflineMessage(List<ECMessage> list) {}
+            public int onGetOfflineMessage() {
+                return -1;
+            }
+            @Override
+            public void onReceiveOfflineMessage(List<ECMessage> list) {
+                for (int i = 0; i < list.size(); i++){
+                    ECMessage.Type type = list.get(i).getType();
+                    if (type == ECMessage.Type.TXT){
+                        ECTextMessageBody textMessageBody = (ECTextMessageBody) list.get(i).getBody();
+                    }else if (type == ECMessage.Type.VOICE){
+                        ECVoiceMessageBody voiceMsgBody = (ECVoiceMessageBody) list.get(i).getBody();
+                    }else if (type == ECMessage.Type.IMAGE){
+                        ECImageMessageBody imageMsgBody = (ECImageMessageBody) list.get(i).getBody();
+                    }
+                }
+            }
             @Override
             public void onReceiveOfflineMessageCompletion() {}
             @Override

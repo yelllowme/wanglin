@@ -50,6 +50,7 @@ public class BigImage_ChatActivity extends Activity implements View.OnClickListe
     private void viewInit(){
         localPath = getIntent().getStringExtra("path");
         imageView_bigImage = (PhotoView)findViewById(R.id.imageView_bigImage_chat);
+        imageView_bigImage.setOnClickListener(this);
 
         //判断是否是本地图片，
         File file = new File(localPath);

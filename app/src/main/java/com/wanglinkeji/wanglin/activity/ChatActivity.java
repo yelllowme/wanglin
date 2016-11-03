@@ -73,8 +73,25 @@ public class ChatActivity extends Activity implements View.OnClickListener {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.layout_activity_chat);
 
-        setChatReceiveListener();
         viewInit();
+    }
+
+    @Override
+    protected void onResume() {
+        setOnThisActivityChatReceiveListener();
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        setOnOhterActivityChatReceiveListener();
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        setOnOhterActivityChatReceiveListener();
+        super.onDestroy();
     }
 
     @Override
@@ -219,7 +236,11 @@ public class ChatActivity extends Activity implements View.OnClickListener {
         return null;
     }
 
-    private void setChatReceiveListener(){
+    private void setOnOhterActivityChatReceiveListener(){
+        MainActivity.setIM_OnChatReceiveListener();
+    }
+
+    private void setOnThisActivityChatReceiveListener(){
         //IM接收消息监听，使用IM功能的开发者需要设置。
         ECDevice.setOnChatReceiveListener(new OnChatReceiveListener() {
             @Override
@@ -228,57 +249,59 @@ public class ChatActivity extends Activity implements View.OnClickListener {
                 if(msg == null) {
                     return ;
                 }
-                ECMessage.Type type = msg.getType();
-                if(type == ECMessage.Type.TXT) {
-                    // 在这里处理文本消息
-                    ECTextMessageBody textMessageBody = (ECTextMessageBody) msg.getBody();
-                    String content = textMessageBody.getMessage();
-                    //Log.d("yellow_IM", "（ChatActivity）接收消息：" + content);
+                //Log.d("yellow_temp", "from--->" + msg.getForm());
+                if (msg.getForm().equals(UserFriendModel.list_friends.get(UserFriendModel.chatPosition).getPhone())){
+                    ECMessage.Type type = msg.getType();
+                    if(type == ECMessage.Type.TXT) {
+                        // 在这里处理文本消息
+                        ECTextMessageBody textMessageBody = (ECTextMessageBody) msg.getBody();
+                        String content = textMessageBody.getMessage();
+                        //Log.d("yellow_IM", "（ChatActivity）接收消息：" + content);
 
-                    ChatItemMoeld chatItemMoeld = new ChatItemMoeld();
-                    chatItemMoeld.setMessageFrom(ChatItemMoeld.MESSAGE_FROM_FRIEND);
-                    chatItemMoeld.setFriendNickName(UserFriendModel.list_friends.get(UserFriendModel.chatPosition).getName());
-                    chatItemMoeld.setMessageType(ChatItemMoeld.MESSAGE_TYPE_TEXT);
-                    chatItemMoeld.setFriendContent(content);
-                    Date date = new Date();
-                    chatItemMoeld.setRealDate(date);
-                    chatItemMoeld.setShowDate(setChatItemIsShowDate(list_chatItem, date));
-                    list_chatItem.add(chatItemMoeld);
-                    listViewAdapter_chat.notifyDataSetChanged();
-                    listView_ChatList.setSelection(list_chatItem.size() - 1);
-                }else if(type == ECMessage.Type.VOICE){
-                    // 在这里处理语音消息
-                    ECVoiceMessageBody voiceMsgBody = (ECVoiceMessageBody) msg.getBody();
-                    ChatItemMoeld chatItemMoeld = new ChatItemMoeld();
-                    chatItemMoeld.setMessageType(ChatItemMoeld.MESSAGE_TYPE_VOICE);
-                    chatItemMoeld.setMessageFrom(ChatItemMoeld.MESSAGE_FROM_FRIEND);
-                    chatItemMoeld.setFriendNickName(UserFriendModel.list_friends.get(UserFriendModel.chatPosition).getName());
-                    chatItemMoeld.setVoicePlayState(ChatItemMoeld.VOICE_PLAY_STATE_STOP);
-                    chatItemMoeld.setVoiceReadState(ChatItemMoeld.VOICE_READ_STATE_NOT_READ);
-                    chatItemMoeld.setVoiceUrl(voiceMsgBody.getRemoteUrl());
-                    chatItemMoeld.setVoiceLength(OtherUtil.getVoiceTimeByFileLength(voiceMsgBody.getLength()));
-                    Date date = new Date();
-                    chatItemMoeld.setRealDate(date);
-                    chatItemMoeld.setShowDate(setChatItemIsShowDate(list_chatItem, date));
-                    list_chatItem.add(chatItemMoeld);
-                    listViewAdapter_chat.notifyDataSetChanged();
-                    listView_ChatList.setSelection(list_chatItem.size() - 1);
-                }else if (type == ECMessage.Type.IMAGE){
-                    ChatItemMoeld chatItemMoeld = new ChatItemMoeld();
-                    chatItemMoeld.setMessageType(ChatItemMoeld.MESSAGE_TYPE_IMAGE);
-                    Date date = new Date();
-                    chatItemMoeld.setRealDate(date);
-                    chatItemMoeld.setShowDate(setChatItemIsShowDate(list_chatItem, date));
-                    chatItemMoeld.setMessageFrom(ChatItemMoeld.MESSAGE_FROM_FRIEND);
-                    chatItemMoeld.setFriendNickName(UserFriendModel.list_friends.get(UserFriendModel.chatPosition).getName());
-                    ECImageMessageBody imageMsgBody = (ECImageMessageBody) msg.getBody();
-                    chatItemMoeld.setImageUrl(imageMsgBody.getThumbnailFileUrl());
-                    list_chatItem.add(chatItemMoeld);
-                    listViewAdapter_chat.notifyDataSetChanged();
-                    listView_ChatList.setSelection(list_chatItem.size() - 1);
+                        ChatItemMoeld chatItemMoeld = new ChatItemMoeld();
+                        chatItemMoeld.setMessageFrom(ChatItemMoeld.MESSAGE_FROM_FRIEND);
+                        chatItemMoeld.setFriendNickName(UserFriendModel.list_friends.get(UserFriendModel.chatPosition).getName());
+                        chatItemMoeld.setMessageType(ChatItemMoeld.MESSAGE_TYPE_TEXT);
+                        chatItemMoeld.setFriendContent(content);
+                        Date date = new Date();
+                        chatItemMoeld.setRealDate(date);
+                        chatItemMoeld.setShowDate(setChatItemIsShowDate(list_chatItem, date));
+                        list_chatItem.add(chatItemMoeld);
+                        listViewAdapter_chat.notifyDataSetChanged();
+                        listView_ChatList.setSelection(list_chatItem.size() - 1);
+                    }else if(type == ECMessage.Type.VOICE){
+                        // 在这里处理语音消息
+                        ECVoiceMessageBody voiceMsgBody = (ECVoiceMessageBody) msg.getBody();
+                        ChatItemMoeld chatItemMoeld = new ChatItemMoeld();
+                        chatItemMoeld.setMessageType(ChatItemMoeld.MESSAGE_TYPE_VOICE);
+                        chatItemMoeld.setMessageFrom(ChatItemMoeld.MESSAGE_FROM_FRIEND);
+                        chatItemMoeld.setFriendNickName(UserFriendModel.list_friends.get(UserFriendModel.chatPosition).getName());
+                        chatItemMoeld.setVoicePlayState(ChatItemMoeld.VOICE_PLAY_STATE_STOP);
+                        chatItemMoeld.setVoiceReadState(ChatItemMoeld.VOICE_READ_STATE_NOT_READ);
+                        chatItemMoeld.setVoiceUrl(voiceMsgBody.getRemoteUrl());
+                        chatItemMoeld.setVoiceLength(OtherUtil.getVoiceTimeByFileLength(voiceMsgBody.getLength()));
+                        Date date = new Date();
+                        chatItemMoeld.setRealDate(date);
+                        chatItemMoeld.setShowDate(setChatItemIsShowDate(list_chatItem, date));
+                        list_chatItem.add(chatItemMoeld);
+                        listViewAdapter_chat.notifyDataSetChanged();
+                        listView_ChatList.setSelection(list_chatItem.size() - 1);
+                    }else if (type == ECMessage.Type.IMAGE){
+                        ChatItemMoeld chatItemMoeld = new ChatItemMoeld();
+                        chatItemMoeld.setMessageType(ChatItemMoeld.MESSAGE_TYPE_IMAGE);
+                        Date date = new Date();
+                        chatItemMoeld.setRealDate(date);
+                        chatItemMoeld.setShowDate(setChatItemIsShowDate(list_chatItem, date));
+                        chatItemMoeld.setMessageFrom(ChatItemMoeld.MESSAGE_FROM_FRIEND);
+                        chatItemMoeld.setFriendNickName(UserFriendModel.list_friends.get(UserFriendModel.chatPosition).getName());
+                        ECImageMessageBody imageMsgBody = (ECImageMessageBody) msg.getBody();
+                        chatItemMoeld.setImageUrl(imageMsgBody.getThumbnailFileUrl());
+                        list_chatItem.add(chatItemMoeld);
+                        listViewAdapter_chat.notifyDataSetChanged();
+                        listView_ChatList.setSelection(list_chatItem.size() - 1);
+                    }
                 }
                 // 根据不同类型处理完消息之后，将消息序列化到本地存储（sqlite）
-                // 通知UI有新消息到达
             }
 
             @Override

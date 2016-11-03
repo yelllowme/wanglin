@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.util.Log;
 
+import com.wanglinkeji.wanglin.model.ChatItemMoeld;
 import com.wanglinkeji.wanglin.model.UserModel;
 
 /**
@@ -96,7 +97,7 @@ public class DBUtil {
         }
     }
 
-    //Log打印本地数据库信息
+    //Log打印本地数据库(User表)信息
     public static void select_userInfoDB(){
         Cursor cursor = WangLinApplication.user_db.query("user_info", null, null, null , null, null, null);
         Log.d("yellow_user_infoDB", "---------------------------------select_userInfoDB_start------------------------------------------");
@@ -112,6 +113,11 @@ public class DBUtil {
         }
         cursor.close();
         Log.d("yellow_user_infoDB", "---------------------------------select_userInfoDB_end------------------------------------------");
+    }
+
+    //向聊天记录表中插入一条聊天记录
+    public static void insertChatMessage(ChatItemMoeld chatItemMoeld){
+
     }
 
 }
