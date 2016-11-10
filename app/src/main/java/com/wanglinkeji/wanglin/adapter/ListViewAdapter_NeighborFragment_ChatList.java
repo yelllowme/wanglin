@@ -69,9 +69,16 @@ public class ListViewAdapter_NeighborFragment_ChatList extends BaseAdapter{
             holder.imageView_header = (CircleImageView)view.findViewById(R.id.imageview_listviewItem_neighborFragment_chatListItem_header);
             holder.textView_friendName = (TextView)view.findViewById(R.id.textview_listviewItem_neighborFragment_chatListItem_friendName);
             holder.textView_lastTalk = (TextView)view.findViewById(R.id.textview_listviewItem_neighborFragment_chatListItem_lastTalk);
+            holder.textView_numOfNotReadMessage = (TextView)view.findViewById(R.id.textview_listviewItem_neighborFragment_chatListItem_numOfNotReadMessage);
             view.setTag(holder);
         }else {
             holder = (viewHolder)view.getTag();
+        }
+        if (list_chat.get(position).getNotReadMessage_count() == 0){
+            holder.textView_numOfNotReadMessage.setVisibility(View.INVISIBLE);
+        }else {
+            holder.textView_numOfNotReadMessage.setVisibility(View.VISIBLE);
+            holder.textView_numOfNotReadMessage.setText(String.valueOf(list_chat.get(position).getNotReadMessage_count()));
         }
         //ImageLoader.getInstance().displayImage(list_chat.get(position).getHeaderUrl(), holder.imageView_header, options);
         holder.textView_lastTalk.setText(list_chat.get(position).getLastTalk());
@@ -83,5 +90,6 @@ public class ListViewAdapter_NeighborFragment_ChatList extends BaseAdapter{
         CircleImageView imageView_header;
         TextView textView_friendName;
         TextView textView_lastTalk;
+        TextView textView_numOfNotReadMessage;
     }
 }

@@ -12,7 +12,7 @@ public class UserFriendModel {
 
     public static int chatPosition;
 
-    public static List<UserFriendModel> list_friends;
+    public static List<UserFriendModel> list_friends = new ArrayList<>();
 
     //好友Id
     private int friendId;

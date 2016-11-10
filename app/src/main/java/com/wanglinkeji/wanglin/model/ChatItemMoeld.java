@@ -35,6 +35,20 @@ public class ChatItemMoeld {
 
     public static final int VOICE_READ_STATE_NOT_READ = 2;
 
+    public static final int IS_SHOW_DATE_HAS_SHOW = 1;
+
+    public static final int IS_SHOW_DATE_NOT_SHOW = 2;
+
+    public static final int MESSAGE_READ_STATE_HAS_READ = 1;
+
+    public static final int MESSAGE_READ_STATE_NOT_READ = 2;
+
+    private int localDB_id;
+
+    private String friendPhone;
+
+    private int isRead;
+
     private Date realDate;
 
     private boolean isShowDate;
@@ -70,6 +84,30 @@ public class ChatItemMoeld {
     private int voiceReadState;
 
     private String imageLocalPath;
+
+    public int getIsRead() {
+        return isRead;
+    }
+
+    public void setIsRead(int isRead) {
+        this.isRead = isRead;
+    }
+
+    public String getFriendPhone() {
+        return friendPhone;
+    }
+
+    public void setFriendPhone(String friendPhone) {
+        this.friendPhone = friendPhone;
+    }
+
+    public int getLocalDB_id() {
+        return localDB_id;
+    }
+
+    public void setLocalDB_id(int localDB_id) {
+        this.localDB_id = localDB_id;
+    }
 
     public String getImageLocalPath() {
         return imageLocalPath;

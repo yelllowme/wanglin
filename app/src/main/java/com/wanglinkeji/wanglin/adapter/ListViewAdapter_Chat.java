@@ -24,7 +24,7 @@ import com.wanglinkeji.wanglin.customerview.CircleImageView;
 import com.wanglinkeji.wanglin.customerview.recordbutton.MediaPlayerManager;
 import com.wanglinkeji.wanglin.model.ChatItemMoeld;
 import com.wanglinkeji.wanglin.model.SwpeingImageModel;
-import com.wanglinkeji.wanglin.util.OtherUtil;
+import com.wanglinkeji.wanglin.util.DBUtil;
 import com.wanglinkeji.wanglin.util.WangLinApplication;
 
 import java.io.File;
@@ -141,24 +141,25 @@ public class ListViewAdapter_Chat extends BaseAdapter {
                 holder.layout_friendVoice.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        DBUtil.readVoice(list_chatItem.get(position).getVoiceUrl());
                         if (list_chatItem.get(position).getVoiceReadState() == ChatItemMoeld.VOICE_READ_STATE_NOT_READ){
                             list_chatItem.get(position).setVoiceReadState(ChatItemMoeld.VOICE_READ_STATE_HAS_READ);
                             holder.imageView_friendVoiceIsRead.setVisibility(View.INVISIBLE);
                         }
                         if (list_chatItem.get(position).getVoicePlayState() == ChatItemMoeld.VOICE_PLAY_STATE_START){
-                            holder.textView_friednVoice.setBackgroundResource(R.mipmap.voice_stop_icon);
+                            holder.textView_friednVoice.setBackgroundResource(R.mipmap.voice_stop_icon__friend);
                             list_chatItem.get(position).setVoicePlayState(ChatItemMoeld.VOICE_PLAY_STATE_STOP);
                             MediaPlayerManager.pause();
                             MediaPlayerManager.release();
                         }else if (list_chatItem.get(position).getVoicePlayState() == ChatItemMoeld.VOICE_PLAY_STATE_STOP){
                             list_chatItem.get(position).setVoicePlayState(ChatItemMoeld.VOICE_PLAY_STATE_START);
-                            holder.textView_friednVoice.setBackgroundResource(R.drawable.anim_chat_voice);
+                            holder.textView_friednVoice.setBackgroundResource(R.drawable.anim_chat_voice_friend);
                             AnimationDrawable animation = (AnimationDrawable)holder.textView_friednVoice.getBackground();
                             animation.start();
                             MediaPlayerManager.playSound(list_chatItem.get(position).getVoiceUrl(), new MediaPlayer.OnCompletionListener() {
                                 @Override
                                 public void onCompletion(MediaPlayer mediaPlayer) {
-                                    holder.textView_friednVoice.setBackgroundResource(R.mipmap.voice_stop_icon);
+                                    holder.textView_friednVoice.setBackgroundResource(R.mipmap.voice_stop_icon__friend);
                                     list_chatItem.get(position).setVoicePlayState(ChatItemMoeld.VOICE_PLAY_STATE_STOP);
                                 }
                             });
@@ -214,18 +215,17 @@ public class ListViewAdapter_Chat extends BaseAdapter {
                 holder.textView_myVoiceLength.setText(String.valueOf(list_chatItem.get(position).getVoiceLength()) + "''");
                 ViewGroup.LayoutParams params = holder.textView_myVoiceSpace.getLayoutParams();
                 params.width = WangLinApplication.screen_Width / 2 /60 * list_chatItem.get(position).getVoiceLength();
-
                 holder.layout_myVoice.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         if (list_chatItem.get(position).getVoicePlayState() == ChatItemMoeld.VOICE_PLAY_STATE_START){
-                            holder.textView_myVoice.setBackgroundResource(R.mipmap.voice_stop_icon);
+                            holder.textView_myVoice.setBackgroundResource(R.mipmap.voice_stop_icon_me);
                             list_chatItem.get(position).setVoicePlayState(ChatItemMoeld.VOICE_PLAY_STATE_STOP);
                             MediaPlayerManager.pause();
                             MediaPlayerManager.release();
                         }else if (list_chatItem.get(position).getVoicePlayState() == ChatItemMoeld.VOICE_PLAY_STATE_STOP){
                             list_chatItem.get(position).setVoicePlayState(ChatItemMoeld.VOICE_PLAY_STATE_START);
-                            holder.textView_myVoice.setBackgroundResource(R.drawable.anim_chat_voice);
+                            holder.textView_myVoice.setBackgroundResource(R.drawable.anim_chat_voice_me);
                             AnimationDrawable animation = (AnimationDrawable)holder.textView_myVoice.getBackground();
                             animation.start();
                             //判断本地录音是否存在，存在则播放本地录音，不存在则播放网络声音
@@ -234,7 +234,7 @@ public class ListViewAdapter_Chat extends BaseAdapter {
                                 MediaPlayerManager.playSound(list_chatItem.get(position).getLocalVoicePath(), new MediaPlayer.OnCompletionListener() {
                                     @Override
                                     public void onCompletion(MediaPlayer mediaPlayer) {
-                                        holder.textView_myVoice.setBackgroundResource(R.mipmap.voice_stop_icon);
+                                        holder.textView_myVoice.setBackgroundResource(R.mipmap.voice_stop_icon_me);
                                         list_chatItem.get(position).setVoicePlayState(ChatItemMoeld.VOICE_PLAY_STATE_STOP);
                                     }
                                 });
@@ -242,7 +242,7 @@ public class ListViewAdapter_Chat extends BaseAdapter {
                                 MediaPlayerManager.playSound(list_chatItem.get(position).getVoiceUrl(), new MediaPlayer.OnCompletionListener() {
                                     @Override
                                     public void onCompletion(MediaPlayer mediaPlayer) {
-                                        holder.textView_myVoice.setBackgroundResource(R.mipmap.voice_stop_icon);
+                                        holder.textView_myVoice.setBackgroundResource(R.mipmap.voice_stop_icon_me);
                                         list_chatItem.get(position).setVoicePlayState(ChatItemMoeld.VOICE_PLAY_STATE_STOP);
                                     }
                                 });

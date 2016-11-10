@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ScrollView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.wanglinkeji.wanglin.R;
 import com.wanglinkeji.wanglin.activity.AboutMe_NeighborFragment_Activity;
@@ -26,6 +27,7 @@ import com.wanglinkeji.wanglin.activity.ChatActivity;
 import com.wanglinkeji.wanglin.activity.ChatGroupActivity;
 import com.wanglinkeji.wanglin.activity.ChatWithOneFriendActivity;
 import com.wanglinkeji.wanglin.activity.FriendBlogActivity;
+import com.wanglinkeji.wanglin.activity.FriendInfoActivity;
 import com.wanglinkeji.wanglin.activity.NewFriendActivity;
 import com.wanglinkeji.wanglin.adapter.ListViewAdapter_AtUser_AtHouseEstate;
 import com.wanglinkeji.wanglin.adapter.ListViewAdapter_AtUser_AtHouseEstate_SearchList;
@@ -64,15 +66,11 @@ public class NeighborFragment extends Fragment implements View.OnClickListener {
 
     private TextView textView_title_message, textView_title_address_list;
 
-    private ScrollView scrollView_message;
-
-    private LinearLayout layout_addressBook, layout_aboutMe, layout_friendBlog, layout_newFriend, layout_chatGroup;
+    private LinearLayout layout_addressBook, layout_aboutMe, layout_friendBlog, layout_newFriend, layout_chatGroup, layout_message;
 
     private SideBar sideBar_addressList;
 
-    private MyListView listView_chatList;
-
-    private ListView listView_friendList, listView_searchFriendList;
+    private ListView listView_chatList, listView_friendList, listView_searchFriendList;
 
     private ListViewAdapter_AtUser_AtHouseEstate listViewAdapter_atUser_atHouseEstate;
 
@@ -82,7 +80,6 @@ public class NeighborFragment extends Fragment implements View.OnClickListener {
         view = inflater.inflate(R.layout.layout_fragment_neighbor, container, false);
 
         viewInit();
-        getChatList();
         return view;
     }
 
@@ -150,16 +147,16 @@ public class NeighborFragment extends Fragment implements View.OnClickListener {
         textView_title_message.setOnClickListener(this);
         textView_title_address_list = (TextView)view.findViewById(R.id.textview_fragment_neighbor_title_addressList);
         textView_title_address_list.setOnClickListener(this);
-        scrollView_message = (ScrollView)view.findViewById(R.id.scrollView_framgent_neighbor_message);
+        layout_message = (LinearLayout) view.findViewById(R.id.scrollView_framgent_neighbor_message);
         layout_addressBook = (LinearLayout) view.findViewById(R.id.layout_framgent_neighbor_addressBook);
         sideBar_addressList = (SideBar)view.findViewById(R.id.sideBar_fragment_neighbor_address_list);
-        listView_chatList = (MyListView)view.findViewById(R.id.listview_framgent_neighbor_chatList);
+        listView_chatList = (ListView)view.findViewById(R.id.listview_framgent_neighbor_chatList);
         listView_friendList = (ListView)view.findViewById(R.id.listview_framgent_neighbor_friendList);
         listView_friendList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 UserFriendModel.chatPosition = (new Long(l)).intValue();
-                Intent intent = new Intent(getActivity(), ChatActivity.class);
+                Intent intent = new Intent(getActivity(), FriendInfoActivity.class);
                 startActivity(intent);
             }
         });
@@ -200,9 +197,20 @@ public class NeighborFragment extends Fragment implements View.OnClickListener {
         listView_chatList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                /*Intent intent = new Intent(getActivity(), ChatActivity.class);
-                intent.putExtra("chatName", ChatListItemModel.list_chatList.get((new Long(l).intValue())).getFriendName());
-                startActivity(intent);*/
+                int positon = -1;
+                for (int j = 0; j < UserFriendModel.list_friends.size(); j++){
+                    if (UserFriendModel.list_friends.get(j).getPhone().equals(ChatListItemModel.list_chatList.get((new Long(l)).intValue()).getFriendPhone())){
+                        positon = j;
+                        break;
+                    }
+                }
+                if (positon == -1){
+                    Toast.makeText(getActivity(), "获取好友信息失败，请反馈！", Toast.LENGTH_SHORT).show();
+                }else {
+                    UserFriendModel.chatPosition = positon;
+                    Intent intent = new Intent(getActivity(), ChatActivity.class);
+                    startActivity(intent);
+                }
             }
         });
     }
@@ -210,7 +218,7 @@ public class NeighborFragment extends Fragment implements View.OnClickListener {
     private void setView_choosedMessage(){
         textView_title_message.setTextColor(0XFFFFFFFF);
         textView_title_address_list.setTextColor(0XFF7C7D81);
-        scrollView_message.setVisibility(View.VISIBLE);
+        layout_message.setVisibility(View.VISIBLE);
         layout_addressBook.setVisibility(View.GONE);
         sideBar_addressList.setVisibility(View.GONE);
     }
@@ -218,33 +226,13 @@ public class NeighborFragment extends Fragment implements View.OnClickListener {
     private void setView_choosedAdressList(){
         textView_title_message.setTextColor(0XFF7C7D81);
         textView_title_address_list.setTextColor(0XFFFFFFFF);
-        scrollView_message.setVisibility(View.GONE);
+        layout_message.setVisibility(View.GONE);
         layout_addressBook.setVisibility(View.VISIBLE);
         sideBar_addressList.setVisibility(View.VISIBLE);
     }
 
     private void getChatList(){
-        ChatListItemModel.list_chatList = new ArrayList<>();
-
-        ChatListItemModel chatListItemModel = new ChatListItemModel();
-        chatListItemModel.setHeaderUrl("http://tupian.qqjay.com/tou3/2016/0726/8529f425cf23fd5afaa376c166b58e29.jpg");
-        chatListItemModel.setLastTalk("我良辰有一百种方法...");
-        chatListItemModel.setFriendName("叶良辰");
-
-        ChatListItemModel chatListItemModel1 = new ChatListItemModel();
-        chatListItemModel1.setHeaderUrl("http://img2.imgtn.bdimg.com/it/u=3880564472,3811979152&fm=21&gp=0.jpg");
-        chatListItemModel1.setLastTalk("我是全英雄联盟最骚的骚猪");
-        chatListItemModel1.setFriendName("PDD");
-
-        ChatListItemModel chatListItemModel2 = new ChatListItemModel();
-        chatListItemModel2.setHeaderUrl("http://img2.imgtn.bdimg.com/it/u=1133364395,3970760305&fm=21&gp=0.jpg");
-        chatListItemModel2.setLastTalk("PDD真的喜欢乱JB黑我");
-        chatListItemModel2.setFriendName("笑笑");
-
-        ChatListItemModel.list_chatList.add(chatListItemModel);
-        ChatListItemModel.list_chatList.add(chatListItemModel1);
-        ChatListItemModel.list_chatList.add(chatListItemModel2);
-
+        ChatListItemModel.list_chatList = DBUtil.getChatList();
         listView_chatList.setAdapter(new ListViewAdapter_NeighborFragment_ChatList(ChatListItemModel.list_chatList, getActivity(),
                 R.layout.layout_listview_item_neighbor_fragment_chatlist));
     }
@@ -289,6 +277,7 @@ public class NeighborFragment extends Fragment implements View.OnClickListener {
                             listViewAdapter_atUser_atHouseEstate = new ListViewAdapter_AtUser_AtHouseEstate(UserFriendModel.list_friends, context,
                                     R.layout.layout_listview_item_at_user_at_houseestate);
                             listView_friendList.setAdapter(listViewAdapter_atUser_atHouseEstate);
+                            getChatList();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

@@ -14,6 +14,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.wanglinkeji.wanglin.R;
+import com.wanglinkeji.wanglin.model.NewFriendInfoModel;
 import com.wanglinkeji.wanglin.model.PhotoModel;
 
 import java.io.File;
@@ -22,6 +23,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Administrator on 2016/8/16.
@@ -244,5 +246,16 @@ public class OtherUtil {
             return 1;
         }
         return duration;
+    }
+
+    public static int getNumOfNotReadMessage(List<NewFriendInfoModel> list_message){
+        int count = 0;
+        for (int i = 0; i < list_message.size(); i++){
+            if (list_message.get(i).getInfoStatus() == NewFriendInfoModel.INFO_STATUS_NOT_READ){
+                count++;
+            }
+        }
+        count += DBUtil.getAll_NumOfNotReadMessage();
+        return count;
     }
 }

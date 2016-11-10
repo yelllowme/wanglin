@@ -73,9 +73,9 @@
 
                         <TextView
                             android:id="@+id/textview_chatItem_friendVoice"
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:background="@mipmap/voice_stop_icon"/>
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:background="@mipmap/voice_stop_icon__friend"/>
 
                         <TextView
                             android:id="@+id/textview_chatItem_friendVoiceSpace"
@@ -221,9 +221,9 @@
 
                         <TextView
                             android:id="@+id/textview_chatItem_myVoice"
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:background="@mipmap/voice_stop_icon"/>
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:background="@mipmap/voice_stop_icon_me"/>
 
                     </LinearLayout>
 
