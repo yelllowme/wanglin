@@ -44,6 +44,23 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/textview_listviewItem_neighborFragment_chatListItem_numOfNotReadMessage"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/shape_circle_red_f67"
+                android:gravity="center"
+                android:text="7"
+                android:textColor="@color/white"
+                android:textSize="12sp"/>
+
+        </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>

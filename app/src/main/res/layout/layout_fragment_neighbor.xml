@@ -46,7 +46,7 @@
     </LinearLayout>
 
     <!--消息-->
-    <ScrollView
+    <LinearLayout
         android:id="@+id/scrollView_framgent_neighbor_message"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -150,7 +150,7 @@
 
             </LinearLayout><!--与我相关 + 好友吐槽-->
 
-            <com.wanglinkeji.wanglin.customerview.MyListView
+            <ListView
                 android:id="@+id/listview_framgent_neighbor_chatList"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -161,7 +161,7 @@
 
         </LinearLayout>
 
-    </ScrollView><!--消息-->
+    </LinearLayout><!--消息-->
 
     <!--通讯录-->
     <LinearLayout

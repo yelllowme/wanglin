@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android" >
+	<item android:drawable="@drawable/chat_voice_anim1_me" android:duration= "300"></item>
+	<item android:drawable="@drawable/chat_voice_anim2_me" android:duration= "300"></item>
+	<item android:drawable="@drawable/chat_voice_anim3_me" android:duration= "300"></item>
+</animation-list>

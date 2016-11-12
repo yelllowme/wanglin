@@ -15,9 +15,39 @@ public class ChatItemMoeld {
 
     public static final int MESSAGE_SEND_STATE_FINISH = 1;
 
+    public static final int MESSAGE_SEND_STATE_FAILED = -1;
+
     public static final int MESSAGE_FROM_FRIEND = 0;
 
     public static final int MESSAGE_FROM_ME = 1;
+
+    public static final int MESSAGE_TYPE_TEXT = 1;
+
+    public static final int MESSAGE_TYPE_VOICE = 2;
+
+    public static final int MESSAGE_TYPE_IMAGE = 3;
+
+    public static final int VOICE_PLAY_STATE_START = 1;
+
+    public static final int VOICE_PLAY_STATE_STOP = 2;
+
+    public static final int VOICE_READ_STATE_HAS_READ = 1;
+
+    public static final int VOICE_READ_STATE_NOT_READ = 2;
+
+    public static final int IS_SHOW_DATE_HAS_SHOW = 1;
+
+    public static final int IS_SHOW_DATE_NOT_SHOW = 2;
+
+    public static final int MESSAGE_READ_STATE_HAS_READ = 1;
+
+    public static final int MESSAGE_READ_STATE_NOT_READ = 2;
+
+    private int localDB_id;
+
+    private String friendPhone;
+
+    private int isRead;
 
     private Date realDate;
 
@@ -31,6 +61,8 @@ public class ChatItemMoeld {
 
     private String friendNickName;
 
+    private int messageType;
+
     private String friendContent;
 
     private String myHeader_url;
@@ -38,6 +70,108 @@ public class ChatItemMoeld {
     private String myNickName;
 
     private String myContent;
+
+    private String localVoicePath;
+
+    private String voiceUrl;
+
+    private String imageUrl;
+
+    private int voicePlayState;
+
+    private int voiceLength;
+
+    private int voiceReadState;
+
+    private String imageLocalPath;
+
+    public int getIsRead() {
+        return isRead;
+    }
+
+    public void setIsRead(int isRead) {
+        this.isRead = isRead;
+    }
+
+    public String getFriendPhone() {
+        return friendPhone;
+    }
+
+    public void setFriendPhone(String friendPhone) {
+        this.friendPhone = friendPhone;
+    }
+
+    public int getLocalDB_id() {
+        return localDB_id;
+    }
+
+    public void setLocalDB_id(int localDB_id) {
+        this.localDB_id = localDB_id;
+    }
+
+    public String getImageLocalPath() {
+        return imageLocalPath;
+    }
+
+    public void setImageLocalPath(String imageLocalPath) {
+        this.imageLocalPath = imageLocalPath;
+    }
+
+    public int getVoiceReadState() {
+        return voiceReadState;
+    }
+
+    public void setVoiceReadState(int voiceReadState) {
+        this.voiceReadState = voiceReadState;
+    }
+
+    public int getVoiceLength() {
+        return voiceLength;
+    }
+
+    public void setVoiceLength(int voiceLength) {
+        this.voiceLength = voiceLength;
+    }
+
+    public int getVoicePlayState() {
+        return voicePlayState;
+    }
+
+    public void setVoicePlayState(int voicePlayState) {
+        this.voicePlayState = voicePlayState;
+    }
+
+    public String getLocalVoicePath() {
+        return localVoicePath;
+    }
+
+    public void setLocalVoicePath(String localVoicePath) {
+        this.localVoicePath = localVoicePath;
+    }
+
+    public String getVoiceUrl() {
+        return voiceUrl;
+    }
+
+    public void setVoiceUrl(String voiceUrl) {
+        this.voiceUrl = voiceUrl;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
+    public int getMessageType() {
+        return messageType;
+    }
+
+    public void setMessageType(int messageType) {
+        this.messageType = messageType;
+    }
 
     public boolean isShowDate() {
         return isShowDate;

@@ -130,6 +130,8 @@
         <activity android:name=".activity.SettingActivity" android:screenOrientation="portrait"/>
         <activity android:name=".activity.ApplyNewFriendActivity" android:screenOrientation="portrait"/>
         <activity android:name=".activity.NineImage_BigActivity"/>
+        <activity android:name=".activity.BigImage_ChatActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.FriendInfoActivity" android:screenOrientation="portrait"/>
 
     </application>
 
