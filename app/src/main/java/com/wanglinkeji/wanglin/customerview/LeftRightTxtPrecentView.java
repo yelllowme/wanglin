@@ -9,6 +9,10 @@ import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.View;
+
+import com.wanglinkeji.wanglin.R;
+import com.wanglinkeji.wanglin.util.OtherUtil;
+
 public class LeftRightTxtPrecentView extends View {
 	private Paint paint;//画笔
 	private int txtLeftColor;//左边文字对应的圆环的颜色
@@ -21,7 +25,7 @@ public class LeftRightTxtPrecentView extends View {
 	private float textSize;//圆环中心显示的文字的大小
 	private float textSizePx;//圆环中心显示的文字的大小(px)
 	private int max;//最大进度
-	private int rightTxtProgress;//设置右边文字所占圆圈的比例
+	private float rightTxtProgress;//设置右边文字所占圆圈的比例
 	private boolean textIsDisplayable;//是否显示中间的文字
 	
 	
@@ -55,11 +59,11 @@ public class LeftRightTxtPrecentView extends View {
 				R.styleable.LeftRightTxtPrecentView_borderColor, Color.GRAY);//边框圆圈的颜色
 		textSize = mTypedArray.getDimension(
 				R.styleable.LeftRightTxtPrecentView_textSize, 15);//字体的大小
-		textSizePx = DisplayUtil.sp2px(context, textSize);
+		textSizePx = OtherUtil.sp2px(context, textSize);
 		roundWidth = mTypedArray.getDimension(
 				R.styleable.LeftRightTxtPrecentView_roundWidth, 10);//圆圈的宽度
 		borderWidth = mTypedArray.getDimension(
-				R.styleable.LeftRightTxtPrecentView_borderWidth, 4);//边框圆圈的宽度
+				R.styleable.LeftRightTxtPrecentView_borderWidth1, 4);//边框圆圈的宽度
 		borderRoundGap =  mTypedArray.getDimension(
 				R.styleable.LeftRightTxtPrecentView_borderRoundGap, 10);//边框圆环和内层圆环的间距	
 		max = mTypedArray.getInteger(R.styleable.LeftRightTxtPrecentView_max, 100);//一圈代表的最大值
@@ -82,17 +86,20 @@ public class LeftRightTxtPrecentView extends View {
 		/**
 		 * 画边框圆圈
 		 */
-		int halfWidth =getWidth()/2;
+		int halfWidth =getWidth()<getHeight()?getWidth()/2:getHeight()/2;
+        halfWidth-=10;
+		float x =getWidth()/2;
+		float y =getHeight()/2;
 		paint.setColor(borderColor); // 
 		paint.setStrokeWidth(borderWidth); // 设置圆环的宽度
 		float borderRaidus = (halfWidth-roundWidth) + (roundWidth+borderWidth)/2 + borderRoundGap;
-		canvas.drawCircle(halfWidth, halfWidth, borderRaidus, paint);
+		canvas.drawCircle(x, y, borderRaidus, paint);
 		/**
 		 * 画最外层的大圆环
 		 */
 		paint.setColor(txtLeftColor); // 设置左侧圆圈颜色（先画出颜色是左侧的一个完整圆圈，右侧的再覆盖一部分）
 		paint.setStrokeWidth(roundWidth); // 设置圆环的宽度
-		canvas.drawCircle(halfWidth,halfWidth, halfWidth-roundWidth, paint);
+		canvas.drawCircle(x,y, halfWidth-roundWidth, paint);
 		
 		/**
 		 * 画文字
@@ -106,13 +113,13 @@ public class LeftRightTxtPrecentView extends View {
 		float text3Width = paint.measureText("踩"); // 测量字体宽度，我们需要根据字体的宽度设置在圆环中间
 		if (textIsDisplayable && style == STROKE) {
 			paint.setColor(splitTxtColor);
-			canvas.drawText("/", halfWidth - text2Width / 2, halfWidth
+			canvas.drawText("/", x - text2Width / 2, y
 					+ textSize / 2, paint); // 画出文字
 			paint.setColor(txtLeftColor);
-			canvas.drawText("赞", halfWidth - text2Width / 2-text1Width, halfWidth
+			canvas.drawText("赞", x - text2Width / 2-text1Width, y
 					+ textSize / 2, paint); // 画出文字
 			paint.setColor(txtRightColor);
-			canvas.drawText("踩", halfWidth + text2Width / 2, halfWidth
+			canvas.drawText("踩", x + text2Width / 2, y
 					+ textSize / 2, paint); // 画出文字
 		}
 		/**
@@ -122,7 +129,7 @@ public class LeftRightTxtPrecentView extends View {
 		paint.setStrokeWidth(roundWidth); // 设置圆环的宽度
 		paint.setStrokeCap(Paint.Cap.BUTT);//设置画笔的始末端与路径的末端一致
 		paint.setColor(txtRightColor); // 设置进度的颜色
-		RectF oval = new RectF(halfWidth-raidus, halfWidth-raidus , halfWidth+raidus, halfWidth+raidus); // 用于定义的圆弧的形状和大小的界限
+		RectF oval = new RectF(x-raidus, y-raidus , x+raidus, y+raidus); // 用于定义的圆弧的形状和大小的界限
 		switch (style) {
 		case STROKE: {
 			paint.setStyle(Paint.Style.STROKE);
@@ -172,7 +179,7 @@ public class LeftRightTxtPrecentView extends View {
 	 * 获取进度.需要同步
 	 * @return
 	 */
-	public synchronized int getRightPrecent() {
+	public synchronized float getRightPrecent() {
 		return rightTxtProgress;
 	}
 
@@ -182,7 +189,7 @@ public class LeftRightTxtPrecentView extends View {
 	 * 设置右侧文字所代表圆圈的比例
 	 * @param rightPrecent
 	 */
-	public synchronized void setRightPrecent(int rightPrecent) {
+	public synchronized void setRightPrecent(float rightPrecent) {
 		if (rightPrecent < 0) {
 			throw new IllegalArgumentException("rightPrecent not less than 0");
 		}
@@ -237,5 +244,4 @@ public class LeftRightTxtPrecentView extends View {
 	public void setTextIsDisplayable(boolean textIsDisplayable) {
 		this.textIsDisplayable = textIsDisplayable;
 	}
-
 }

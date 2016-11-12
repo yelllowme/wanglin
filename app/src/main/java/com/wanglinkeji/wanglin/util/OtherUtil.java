@@ -12,6 +12,7 @@ import android.view.animation.RotateAnimation;
 import android.view.animation.TranslateAnimation;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.wanglinkeji.wanglin.R;
 import com.wanglinkeji.wanglin.model.PhotoModel;
@@ -210,5 +211,23 @@ public class OtherUtil {
             e.printStackTrace();
         }
         return format_full.format(getDate);
+    }
+
+    /**
+     * 将sp值转换为px值，保证文字大小不变
+     */
+    public static int sp2px(Context context, float spValue) {
+        final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
+        return (int) (spValue * fontScale + 0.5f);
+    }
+
+    /*提示绑定小区*/
+    public static void notifyBindEstate(Context context){
+        Toast.makeText(context,"没绑定小区，请先绑定.",Toast.LENGTH_SHORT).show();
+
+    }
+    /*绑定小区*/
+    public static void bindEstate(Context context){
+
     }
 }

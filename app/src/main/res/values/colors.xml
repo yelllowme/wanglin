@@ -24,4 +24,13 @@
     <color name="gray_dark_six_d4">#FFD4DBE0</color>
     <color name="gray_seven">#FFB8B8B8</color>
     <color name="white_lighter">#AAFFFFFF</color>
+    <color name="light_white_gray">#FFE9EAEC</color>
+    <color name="light_white">#FFFCFDFD</color>
+
+    <!-- Material Dialog-->
+    <color name="card_background">#ffffff</color>
+    <color name="card_shadow">#10000000</color>
+    <color name="lite_blue">#ff359ff2</color>
+    <color name="window_background">#00000000</color>
+    <color name="black_de">#DE000000</color>
 </resources>

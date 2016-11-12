@@ -38,6 +38,7 @@
         android:scrollbars="none">
 
         <LinearLayout
+            android:id="@+id/ll_menu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -45,7 +46,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="170dp">
+                android:layout_height="146dp">
 
                 <android.support.v4.view.ViewPager
                     android:id="@+id/viewpager_fragment_CertifiledProperty_scrollImages"
@@ -66,7 +67,7 @@
             <!--物业功能栏-->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="170dp"
+                android:layout_height="146dp"
                 android:layout_marginTop="10dp"
                 android:orientation="vertical"
                 android:gravity="center"
@@ -128,6 +129,7 @@
 
                     <!--我要报修-->
                     <LinearLayout
+                        android:id="@+id/ll_fragment_CertifiledProperty_myRepair"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -184,6 +186,7 @@
 
                     <!--表扬批评-->
                     <LinearLayout
+                        android:id="@+id/ll_fragment_CertifiledProperty_praise_criticize"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -207,6 +210,7 @@
 
                     <!--建议献策-->
                     <LinearLayout
+                        android:id="@+id/ll_fragment_CertifiledProperty_suggestions"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
@@ -230,6 +234,7 @@
 
                     <!--BOSS直通-->
                     <LinearLayout
+                        android:id="@+id/ll_fragment_CertifiledProperty_bossAccess"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
