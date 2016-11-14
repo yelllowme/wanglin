@@ -68,11 +68,18 @@ public class UserIdentityInfoModel {
 
     //获得当前用户的默认小区
     public static HousingEstateModel getDefaultHouseEstate(){
-        for (int i = 0; i < userIdentityInfoModel.getList_housingEstate().size(); i++){
-            List<UserHouseModel> list_house_temp = userIdentityInfoModel.getList_housingEstate().get(i).getList_house();
+        List<HousingEstateModel> List_housingEstate = userIdentityInfoModel.getList_housingEstate();
+        if(List_housingEstate==null){
+            return null;
+        }
+        for (int i = 0; i < List_housingEstate.size(); i++){
+            List<UserHouseModel> list_house_temp = List_housingEstate.get(i).getList_house();
+            if(list_house_temp==null){
+                continue;
+            }
             for (int j = 0; j < list_house_temp.size(); j++){
                 if (list_house_temp.get(j).isDefault() == true){
-                    return userIdentityInfoModel.getList_housingEstate().get(i);
+                    return List_housingEstate.get(i);
                 }
             }
         }

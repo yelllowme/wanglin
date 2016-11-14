@@ -197,6 +197,24 @@ public class HttpUtil {
     //我的吐槽
     public static String getMyBlog_url = url_header + "/Complain/MyComplain";
 
+    //发起报修
+    public static String getRepair_url = url_header + "/VillageMsg/Repair";
+
+    //建议献策
+    public static String getSuggestion_url = url_header + "/VillageMsg/Suggestions";
+
+    //BOOS直通
+    public static String getBossStraight_url = url_header + "/VillageMsg/BoosStraight";
+
+    //点赞物管
+    public static String getAddGood = url_header +"/village/AddGood";
+
+    //踩物管
+    public static String getAddBad = url_header +"/village/AddBad";
+
+    //小区物业信息
+    public static String getFindCompany = url_header + "/village/FindCompany";
+
     /**
      *Volley Http Post请求通用方法
      */

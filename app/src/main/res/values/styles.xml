@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+<!--<<<<<<< HEAD-->
     <style name="Dialogstyle">
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowFrame">@null</item>
@@ -18,5 +19,17 @@
         <!-- 显示对话框时当前的屏幕是否变暗 -->
         <item name="android:backgroundDimEnabled">false</item>
     </style>
+<!--=======-->
+    <!-- Material Dialog-->
+    <style name="ActionButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/action_button_height</item>
+        <item name="android:minWidth">@dimen/action_button_min_width</item>
+        <item name="android:paddingLeft">@dimen/action_button_padding_horizontal</item>
+        <item name="android:paddingRight">@dimen/action_button_padding_horizontal</item>
+        <item name="android:background">@drawable/button</item>
+        <item name="android:textSize">@dimen/action_button_text_size</item>
+    </style>
+<!--&gt;>>>>>> wang_ming_hua-->
 
 </resources>

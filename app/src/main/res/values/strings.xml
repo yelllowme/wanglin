@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">网邻</string>
+    <string name="zan">物业服务不错，赞一个</string>
+    <string name="cai">物业服务不佳，踩一个</string>
+    <string name="collect_criticize">请输入“踩”的原因，以帮助物业更好地改善服务</string>
 </resources>

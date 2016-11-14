@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00000000">
+
+        <EditText
+            android:id="@+id/collect_criticize"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.9"
+            android:textColor="#EED4D4D4"
+            android:textColorHint="#EED4D4D4"
+            android:hint="@string/collect_criticize"
+            android:textSize="14sp"
+            android:paddingLeft="@dimen/material_dialog_margin"
+            android:paddingRight="@dimen/material_dialog_margin"
+            android:paddingTop="@dimen/material_dialog_margin"
+            android:gravity="top"
+            android:background="@null"/>
+
+        <TextView
+            android:id="@+id/criticize_send"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:text="发送"
+            android:layout_gravity="right"
+            android:gravity="right|center_vertical"
+            android:paddingRight="@dimen/material_dialog_btn_margin"
+            android:textColor="#FF39C6CF"
+            android:textSize="15sp"/>
+
+</LinearLayout>

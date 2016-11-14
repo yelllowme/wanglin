@@ -1,11 +1,13 @@
 package com.wanglinkeji.wanglin.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,15 +16,21 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.wanglinkeji.wanglin.R;
+import com.wanglinkeji.wanglin.activity.MyHouseEstateActivity;
+import com.wanglinkeji.wanglin.activity.PraiseCriticizeActivity;
+import com.wanglinkeji.wanglin.activity.SimplePostInfoActivity;
 import com.wanglinkeji.wanglin.adapter.ListViewAdapter_CertifilerProperty_news;
 import com.wanglinkeji.wanglin.adapter.ViewPagerAdapter_CertifilerProperty_ScrollImages;
 import com.wanglinkeji.wanglin.customerview.MyListView;
+import com.wanglinkeji.wanglin.model.HousingEstateModel;
 import com.wanglinkeji.wanglin.model.NewsModel;
+import com.wanglinkeji.wanglin.model.UserIdentityInfoModel;
 import com.wanglinkeji.wanglin.util.OtherUtil;
 import com.wanglinkeji.wanglin.util.WangLinApplication;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -58,6 +66,17 @@ public class CertifiedPropertyFragment extends Fragment implements View.OnClickL
     //图片轮播器当前页索引
     private static int viewPager_currentItem;
 
+    //gridMenu Item
+    private LinearLayout  ll_appplyRepair,ll_sendSuggestions,ll_bossAccess,ll_praise_criticize;
+    private View notice_view;
+    private HousingEstateModel defaultHouseEstate;
+    private LinearLayout ll_bindEstate;
+
+    private Handler mHander;
+    /*获取默认小区最大等待时间,超过视为未绑定默认小区 ms*/
+    private int maxTimeout =1500;
+    private boolean isTimeout =false;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -71,9 +90,45 @@ public class CertifiedPropertyFragment extends Fragment implements View.OnClickL
 
     @Override
     public void onClick(View view) {
+        //简单提交表单界面（只提交一个字符串参数）界面也一致，统一由一个页面处理
+        Intent menuIntent = null;
+        //检测打开界面类型
+        List<Integer> simpleTypes = new ArrayList<>();
+        Collections.addAll(simpleTypes,R.id.ll_fragment_CertifiledProperty_bossAccess,
+                R.id.ll_fragment_CertifiledProperty_myRepair,
+                R.id.ll_fragment_CertifiledProperty_suggestions);
+        if(simpleTypes.contains(view.getId())){
+            menuIntent = new Intent(getActivity(), SimplePostInfoActivity.class);
+        }else if(view.getId()==R.id.ll_fragment_CertifiledProperty_praise_criticize){
+            menuIntent = new Intent(getActivity(), PraiseCriticizeActivity.class);
+        }
+
         switch (view.getId()){
+            case R.id.ll_fragment_CertifiledProperty_bossAccess:
+                menuIntent.putExtra("type","bossAccess");
+                menuIntent.putExtra("title","BOSS直通");
+                menuIntent.putExtra("hint","请输入联系内容......");
+                menuIntent.putExtra("btnTxt","联系BOSS");
+                break;
+            case R.id.ll_fragment_CertifiledProperty_myRepair:
+                menuIntent.putExtra("type","myRepair");
+                menuIntent.putExtra("title","我要报修");
+                menuIntent.putExtra("hint","请描述报修内容......");
+                menuIntent.putExtra("btnTxt","申请报修");
+                break;
+            case R.id.ll_fragment_CertifiledProperty_suggestions:
+                menuIntent.putExtra("type","suggestions");
+                menuIntent.putExtra("title","建议献策");
+                menuIntent.putExtra("hint","请输入您的建议......");
+                menuIntent.putExtra("btnTxt","发送建议");
+                break;
+            case R.id.ll_fragment_CertifiledProperty_praise_criticize:
+                break;
             default:
                 break;
+        }
+        if(menuIntent!=null){
+            startActivity(menuIntent);
         }
     }
 
@@ -81,6 +136,19 @@ public class CertifiedPropertyFragment extends Fragment implements View.OnClickL
         textView_houseEstateName = (TextView)view.findViewById(R.id.textview_fragment_CertifiledProperty_houseEstateName);
         listView_news = (MyListView)view.findViewById(R.id.listview_fragment_CertifiledProperty_news);
         viewPager_scrollImages = (ViewPager)view.findViewById(R.id.viewpager_fragment_CertifiledProperty_scrollImages);
+        //菜单初始化
+        ll_appplyRepair =(LinearLayout)view.findViewById(R.id.ll_fragment_CertifiledProperty_myRepair);
+        ll_sendSuggestions =(LinearLayout)view.findViewById(R.id.ll_fragment_CertifiledProperty_suggestions);
+        ll_bossAccess =(LinearLayout)view.findViewById(R.id.ll_fragment_CertifiledProperty_bossAccess);
+        ll_praise_criticize=(LinearLayout) view.findViewById(R.id.ll_fragment_CertifiledProperty_praise_criticize);
+
+        //setListener
+        ll_appplyRepair.setOnClickListener(this);
+        ll_sendSuggestions.setOnClickListener(this);
+        ll_bossAccess.setOnClickListener(this);
+        ll_praise_criticize.setOnClickListener(this);
+
+        mHander = new Handler();
     }
 
     private void getUserInfo(){
@@ -155,10 +223,78 @@ public class CertifiedPropertyFragment extends Fragment implements View.OnClickL
 
         viewPager_scrollImages.setAdapter(new ViewPagerAdapter_CertifilerProperty_ScrollImages(list_image, list_view));
         viewPager_currentItem = list_image.size() * IMAGE_COUNT/6;
-
         /**
          * 获取物业新闻
          */
+        new Thread(){
+            @Override
+            public void run() {
+                HousingEstateModel houseEstate = UserIdentityInfoModel.getDefaultHouseEstate();
+                long old =System.currentTimeMillis();
+                while (houseEstate==null){
+                    houseEstate = UserIdentityInfoModel.getDefaultHouseEstate();
+                    if(System.currentTimeMillis()-old>maxTimeout&&houseEstate==null){
+                        isTimeout =true;
+                        break;
+                    }
+                }
+                defaultHouseEstate =houseEstate;
+                long last =System.currentTimeMillis();
+                Log.e("info","used time:"+(last-old)/1000.0+" S.");
+                mHander.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        initHousingEstateNews();
+                    }
+                });
+            }
+        }.start();
+    }
+
+    private void initHousingEstateNews(){
+        if(defaultHouseEstate==null&&isTimeout){
+            //提示用户绑定小区
+            listView_news.setVisibility(View.GONE);
+            LinearLayout ll_menu = (LinearLayout) view.findViewById(R.id.ll_menu);
+            LinearLayout.LayoutParams params1 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
+            params1.setMargins(0,OtherUtil.dip2px(getActivity(),10),0,0);
+            notice_view = LayoutInflater.from(getActivity()).inflate(R.layout.bind_housing_estate,null);
+            ll_bindEstate =(LinearLayout)notice_view.findViewById(R.id.ll_bindestate);
+            ll_bindEstate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(getActivity(), MyHouseEstateActivity.class));
+                }
+            });
+            notice_view.setLayoutParams(params1);
+            ll_menu.addView(notice_view);
+        }
+        else{
+            getHousingEstateNews();
+        }
+    }
+    private void getHousingEstateNews(){
+        listView_news.setVisibility(View.VISIBLE);
+        /*String url = HttpUtil.getFindCompany;
+        Map<String,String> params = new HashMap<String, String>();
+        params.put("villageId","166860");
+        HttpUtil.sendVolleyStringRequest_Post(getActivity(),url,params, DBUtil.getLoginUser().getToken(),"yellow_getFindCompanyInfo",new WanglinHttpResponseListener(){
+            @Override
+            public void onSuccessResponse(JSONObject jsonObject_response) {
+                try {
+                    Log.e("info",jsonObject_response.toString());
+                }catch (Exception e){
+                    e.printStackTrace();
+                }finally {
+                }
+            }
+            @Override
+            public void onConnectingError(){
+            }
+            @Override
+            public void onDisconnectError() {
+            }
+        });*/
         list_news = new ArrayList<>();
         NewsModel newsModel = new NewsModel();
         newsModel.setImageUrl("http://myt.cjn.cn/yzh/201503/W020150328400491889933.jpg");
@@ -176,9 +312,7 @@ public class CertifiedPropertyFragment extends Fragment implements View.OnClickL
         list_news.add(newsModel1);
         list_news.add(newsModel2);
         listView_news.setAdapter(new ListViewAdapter_CertifilerProperty_news(list_news, getActivity(), R.layout.layout_listview_item_certifiler_property_news));
-
     }
-
     private static class ImageHandler extends Handler {
 
         /**

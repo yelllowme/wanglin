@@ -1,0 +1,15 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+
+    <dimen name="praise_criticze_marintop">35px</dimen>
+    <dimen name="zan_cai_txtsize">12sp</dimen>
+    <dimen name="zan_cai_txtsize2">27px</dimen>
+    <dimen name="zan_cai_txtsize3">24px</dimen>
+    <dimen name="zan_cai_roundwidth">35px</dimen>
+    <dimen name="zan_cai_bwidth">2px</dimen>
+    <dimen name="zan_cai_gap">20px</dimen>
+    <dimen name="zan_cai_icon_padding">37.5px</dimen>
+    <dimen name="zan_cai_icon_txt_margin">15px</dimen>
+    <dimen name="zan_cai_line_margin_tb">60px</dimen>
+
+</resources>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_white_gray">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/title_margin"
+        android:paddingBottom="@dimen/title_margin"
+        android:gravity="center"
+        android:background="@color/colorPrimaryDark">
+
+        <ImageView
+            android:id="@+id/imageview_back"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="10dp"
+            android:src="@mipmap/left_cancle_white"/>
+
+        <TextView
+            android:id="@+id/textview_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="与我相关"
+            android:textSize="@dimen/title_txt_size"
+            android:textColor="@color/light_white"
+            android:focusable="true"
+            android:focusableInTouchMode="true"/>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="10dp" />
+
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/editText_input"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edittext_height"
+            android:gravity="top|left"
+            android:layout_marginTop="@dimen/edittext_margintop"
+            android:layout_marginLeft="@dimen/edittext_marginleft_right"
+            android:layout_marginRight="@dimen/edittext_marginleft_right"
+            android:paddingLeft="@dimen/edittext_padding_left"
+            android:paddingRight="@dimen/edittext_padding_left"
+            android:paddingTop="@dimen/edittext_padding_top"
+            android:background="@drawable/shape_rectangel_white_noborder_allconrner"
+            android:hint="输入文本......"
+            android:textSize="14sp"
+            android:textColor="#DDA7A9AA"
+            android:textColorHint="#DDA7A9AA"
+            />
+
+        <Button
+            android:id="@+id/btn_post"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/editText_input"
+            android:background="@drawable/shape_rectangle_blue_noborder_allcorner"
+            android:layout_marginLeft="@dimen/edittext_marginleft_right"
+            android:layout_marginRight="@dimen/edittext_marginleft_right"
+            android:layout_marginTop="@dimen/btn_margin_top"
+            android:textColor="@color/white"
+            android:textSize="@dimen/btn_txt_size"
+            android:textColorHighlight="@color/light_white"
+            android:text="提交"/>
+    </RelativeLayout>
+
+
+</LinearLayout>

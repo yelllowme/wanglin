@@ -7,6 +7,8 @@ import java.util.List;
  * 小区Model
  */
 public class HousingEstateModel {
+    /*小区是否加载完成*//*
+    public static boolean isGetFinish;*/
 
     public static List<HousingEstateModel> list_housingEstate_neighbor;
 
